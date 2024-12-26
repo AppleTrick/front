@@ -1,0 +1,6 @@
+{
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx" // React 17 이상에서는 react-jsx 권장
+  }
+}
