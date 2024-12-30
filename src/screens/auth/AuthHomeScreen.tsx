@@ -1,19 +1,25 @@
 import {StackScreenProps} from '@react-navigation/stack';
 import {Dimensions, Image, SafeAreaView, StyleSheet, View} from 'react-native';
 import {AuthStackParamList} from '../../navigations/stack/AuthStackNavigator';
-import {authNavigations} from '../../constrants/navigations';
 import CustomButton from '../../components/CustomButton';
+import {authNavigations, colors} from '../../constrants';
 
 type AuthHomeScreenProps = StackScreenProps<
   AuthStackParamList,
   typeof authNavigations.AUTH_HOME
 >;
 
+const a = colors.BLACK;
+
 function AuthHomeScreen({navigation}: AuthHomeScreenProps) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.imageContainer}>
-        <Image style={styles.image} source={require('../../assets/logo.png')} />
+        <Image
+          resizeMode="contain"
+          style={styles.image}
+          source={require('../../assets/logo.png')}
+        />
       </View>
       <View style={styles.buttonContainer}>
         <CustomButton
