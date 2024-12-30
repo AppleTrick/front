@@ -1,8 +1,21 @@
 import {ForwardedRef} from 'react';
 
-const mergeRefs = <T>(...refs: ForwardedRef<T>[]) => {
-  return (node: T) => {
-    refs.forEach(ref => {
+// const mergeRefs = <T>(...refs: ForwardedRef<T>[]) => {
+//   return (node: T) => {
+//     refs.forEach(ref => {
+//       if (typeof ref === 'function') {
+//         ref(node);
+//       } else if (ref) {
+//         ref.current = node;
+//       }
+//     });
+//   };
+// };
+
+// mergeRef
+function mergeRefs<T>(...refs: ForwardedRef<T>[]) {
+  return function (node: T) {
+    refs.forEach(function (ref) {
       if (typeof ref === 'function') {
         ref(node);
       } else if (ref) {
@@ -10,6 +23,6 @@ const mergeRefs = <T>(...refs: ForwardedRef<T>[]) => {
       }
     });
   };
-};
+}
 
 export {mergeRefs};

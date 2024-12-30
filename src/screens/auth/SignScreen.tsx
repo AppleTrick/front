@@ -15,6 +15,8 @@ function SignUpScreen() {
     validate: validateSignup,
   });
 
+  const handleSubmit = () => {};
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.inputContainer}>
@@ -25,25 +27,28 @@ function SignUpScreen() {
           inputMode="email"
           returnKeyType="next"
           blurOnSubmit={false}
-          onSubmitEditing={() => passwordRef.current?.focus}
+          onSubmitEditing={() => passwordRef.current?.focus()}
           {...signup.getTextInputProps('email')}
         />
         <InputField
           ref={passwordRef}
           placeholder="비밀번호"
+          textContentType="oneTimeCode"
           error={signup.errors.password}
           touched={signup.touched.password}
           secureTextEntry
           returnKeyType="next"
           blurOnSubmit={false}
-          onSubmitEditing={() => passwordConfirmRef.current?.focus}
+          onSubmitEditing={() => passwordConfirmRef.current?.focus()}
           {...signup.getTextInputProps('password')}
         />
         <InputField
           ref={passwordConfirmRef}
           placeholder="비밀번호 확인"
+          textContentType="oneTimeCode"
           error={signup.errors.passwordConfirm}
           touched={signup.touched.passwordConfirm}
+          onSubmitEditing={handleSubmit}
           {...signup.getTextInputProps('passwordConfirm')}
           secureTextEntry
         />
