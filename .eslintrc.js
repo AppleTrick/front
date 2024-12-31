@@ -4,7 +4,8 @@ module.exports = {
   rules: {
     '@typescript-eslint/no-unused-vars': 'off',
     'react/react-in-jsx-scope': 'off',
-    'prettier/prettier': ['error'], // Prettier 규칙 적용
+    // 'prettier/prettier': ['error'], // Prettier 규칙 적용
+    'prettier/prettier': 'off',
   },
   parserOptions: {
     requireConfigFile: false,
