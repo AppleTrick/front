@@ -5,12 +5,13 @@ import useForm from '../../hooks/useForm';
 import {validationLogin} from '../../utils';
 import {useRef} from 'react';
 import {TextInput} from 'react-native-gesture-handler';
+import useAuth from '../../hooks/queries/useAuth';
 
 interface LoginScreenProps {}
 
 function LoginScreen({}: LoginScreenProps) {
   const passwordRef = useRef<TextInput | null>(null);
-
+  const {loginMutation} = useAuth();
   const login = useForm({
     initialValue: {
       email: '',
@@ -21,6 +22,7 @@ function LoginScreen({}: LoginScreenProps) {
 
   const handleSubmit = () => {
     console.log('values', login.values);
+    loginMutation.mutate(login.values);
   };
 
   return (
