@@ -5,16 +5,13 @@ import {
   logout,
   postLogin,
   postSignup,
-} from '../../api/auth';
-import {
-  useMutationCustomOptions,
-  useQueryCustomOptions,
-} from '../../types/common';
-import {removeEncryptStorage, setEncryptStorage} from '../../utils';
-import {removeHeader, setHeader} from '../../utils/header';
+} from '@/api/auth';
+import {useMutationCustomOptions, useQueryCustomOptions} from '@/types/common';
+import {removeEncryptStorage, setEncryptStorage} from '@/utils';
+import {removeHeader, setHeader} from '@/utils/header';
 import {useEffect} from 'react';
-import queryClient from '../../api/queryClient';
-import {numbers, queryKeys, storageKeys} from '../../constants';
+import queryClient from '@/api/queryClient';
+import {numbers, queryKeys, storageKeys} from '@/constants';
 
 // v5 5버젼 부터는 객체로 전달
 function useSignup(mutationOptions?: useMutationCustomOptions) {

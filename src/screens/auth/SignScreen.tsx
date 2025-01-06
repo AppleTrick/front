@@ -64,7 +64,7 @@ function SignUpScreen() {
           secureTextEntry
         />
       </View>
-      <CustomButton label="회원가입" />
+      <CustomButton label="회원가입" onPress={handleSubmit} />
     </SafeAreaView>
   );
 }

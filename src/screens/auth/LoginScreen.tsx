@@ -21,7 +21,7 @@ function LoginScreen({}: LoginScreenProps) {
   });
 
   const handleSubmit = () => {
-    console.log('values', login.values);
+    console.log(login.values);
     loginMutation.mutate(login.values);
   };
 
