@@ -9,7 +9,8 @@ import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {MainDrawerParamList} from '@/navigations/drawer/MainDrawerNavigator';
 import {useRef} from 'react';
-import useUserLocation from '@/hooks/queries/useUserLocation';
+import useUserLocation from '@/hooks/useUserLocation';
+import usePermissions from '@/hooks/usePermissions';
 
 type Navigation = CompositeNavigationProp<
   StackNavigationProp<MapStackParamList>,
@@ -22,6 +23,8 @@ function MapHomeScreen({}) {
   const navigation = useNavigation<Navigation>();
   const mapRef = useRef<MapView | null>(null);
   const {userLocation, isUserLocationError} = useUserLocation();
+
+  usePermissions('LOCATION');
 
   const handleLogout = () => {
     logoutMutation.mutate(null);
