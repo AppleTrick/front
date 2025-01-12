@@ -40,6 +40,10 @@
 		342C1564759701B61D4663D3 /* Pods-matzipapp-matzipappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-matzipapp-matzipappTests.debug.xcconfig"; path = "Target Support Files/Pods-matzipapp-matzipappTests/Pods-matzipapp-matzipappTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4436EDCE0F19D33142BD8CD4 /* Pods-matzipapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-matzipapp.debug.xcconfig"; path = "Target Support Files/Pods-matzipapp/Pods-matzipapp.debug.xcconfig"; sourceTree = "<group>"; };
 		4E69CEC42D2C0A0B009FFF99 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		4E69CECA2D33DF0D009FFF99 /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AntDesign.ttf; sourceTree = "<group>"; };
+		4E69CECB2D33DF0D009FFF99 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
+		4E69CECC2D33DF0D009FFF99 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
+		4E69CECD2D33DF0D009FFF99 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = matzipapp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B890D2B78C523481156A5527 /* libPods-matzipapp-matzipappTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-matzipapp-matzipappTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3B10E8022C0A536CBFD05B8 /* libPods-matzipapp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-matzipapp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +111,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4E69CEC92D33DE8A009FFF99 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4E69CECA2D33DF0D009FFF99 /* AntDesign.ttf */,
+				4E69CECB2D33DF0D009FFF99 /* Ionicons.ttf */,
+				4E69CECC2D33DF0D009FFF99 /* MaterialIcons.ttf */,
+				4E69CECD2D33DF0D009FFF99 /* Octicons.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +132,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				4E69CEC92D33DE8A009FFF99 /* Fonts */,
 				4E69CEC42D2C0A0B009FFF99 /* Config.xcconfig */,
 				13B07FAE1A68108700A75B9A /* matzipapp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,

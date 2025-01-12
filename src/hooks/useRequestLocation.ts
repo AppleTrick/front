@@ -1,5 +1,5 @@
 import {PERMISSIONS, request, check, RESULTS} from 'react-native-permissions';
-import {Platform, Alert} from 'react-native';
+import {Platform} from 'react-native';
 
 function useRequestLocation() {
   const newRequest = async () => {
@@ -11,14 +11,20 @@ function useRequestLocation() {
     try {
       // 권한 상태 확인
       const status = await check(permission);
+      console.log('status', status);
       if (status === RESULTS.GRANTED) {
         console.log('권한이 이미 허용되었습니다.');
         return;
       }
 
-      if (status === RESULTS.DENIED || status === RESULTS.LIMITED) {
+      if (
+        status === RESULTS.DENIED ||
+        status === RESULTS.LIMITED ||
+        status === RESULTS.BLOCKED
+      ) {
         // 권한 요청
         const result = await request(permission);
+
         if (result === RESULTS.GRANTED) {
           console.log('권한이 허용되었습니다.');
         } else {
