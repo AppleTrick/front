@@ -2,7 +2,6 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {StyleSheet} from 'react-native';
 import {mapNavigations} from '@/constants';
 import MapHomeScreen from '@/screens/map/MapHomeScreen';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 export type MapStackParamList = {
   [mapNavigations.MAP_HOME]: undefined;
