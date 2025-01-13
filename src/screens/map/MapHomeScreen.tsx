@@ -11,7 +11,6 @@ import {MainDrawerParamList} from '@/navigations/drawer/MainDrawerNavigator';
 import {useRef} from 'react';
 import useUserLocation from '@/hooks/useUserLocation';
 import usePermissions from '@/hooks/usePermissions';
-import useRequestLocation from '@/hooks/useRequestLocation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -26,13 +25,8 @@ function MapHomeScreen({}) {
   const navigation = useNavigation<Navigation>();
   const mapRef = useRef<MapView | null>(null);
   const {userLocation, isUserLocationError} = useUserLocation();
-  // const {newRequest} = useRequestLocation();
 
   usePermissions('LOCATION');
-
-  // useEffect(() => {
-  //   newRequest();
-  // }, [newRequest]);
 
   const handleLogout = () => {
     logoutMutation.mutate(null);
@@ -43,7 +37,6 @@ function MapHomeScreen({}) {
       // 에러메세지 표시하기
       return;
     }
-
     mapRef.current?.animateToRegion({
       latitude: userLocation.latitude,
       longitude: userLocation.longitude,
@@ -61,11 +54,16 @@ function MapHomeScreen({}) {
         showsUserLocation
         followsUserLocation
         showsMyLocationButton={false}
+        initialRegion={{
+          latitude: userLocation.latitude,
+          longitude: userLocation.longitude,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
       />
       <Pressable
         style={[styles.drawerButton, {top: inset.top || 20}]}
         onPress={() => navigation.openDrawer()}>
-        {/* <Text>서랍</Text> */}
         <Ionicons name="menu" color={colors.WHITE} size={25} />
       </Pressable>
       <View style={styles.buttonList}>
