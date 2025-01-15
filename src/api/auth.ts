@@ -33,9 +33,9 @@ const postLogin = async ({
   return data;
 };
 
-type ReponseProfile = Profile & Category;
+type ResponseProfile = Profile & Category;
 
-const getProfile = async (): Promise<ReponseProfile> => {
+const getProfile = async (): Promise<ResponseProfile> => {
   const {data} = await axiosInstance.get('/auth/me');
 
   return data;
@@ -58,4 +58,4 @@ const logout = async () => {
 };
 
 export {postSignup, postLogin, getProfile, getAccessToken, logout};
-export type {RequestUser, ResponseToken, ReponseProfile};
+export type {RequestUser, ResponseToken, ResponseProfile};
