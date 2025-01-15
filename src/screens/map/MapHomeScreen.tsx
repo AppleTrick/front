@@ -1,6 +1,12 @@
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 import useAuth from '@/hooks/queries/useAuth';
-import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
+import MapView, {
+  Callout,
+  LatLng,
+  LongPressEvent,
+  Marker,
+  PROVIDER_GOOGLE,
+} from 'react-native-maps';
 import {colors} from '@/constants';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {CompositeNavigationProp, useNavigation} from '@react-navigation/native';
@@ -8,12 +14,13 @@ import {MapStackParamList} from '@/navigations/stack/MapStackNavigator';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {MainDrawerParamList} from '@/navigations/drawer/MainDrawerNavigator';
-import {useRef} from 'react';
+import {useRef, useState} from 'react';
 import useUserLocation from '@/hooks/useUserLocation';
 import usePermissions from '@/hooks/usePermissions';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import mapStyle from '@/style/mapStyle';
+import CustomMarker from '@/components/CustomMarker';
 
 type Navigation = CompositeNavigationProp<
   StackNavigationProp<MapStackParamList>,
@@ -26,11 +33,16 @@ function MapHomeScreen({}) {
   const navigation = useNavigation<Navigation>();
   const mapRef = useRef<MapView | null>(null);
   const {userLocation, isUserLocationError} = useUserLocation();
+  const [selectLocation, setSelectLocation] = useState<LatLng>();
 
   usePermissions('LOCATION');
 
   const handleLogout = () => {
     logoutMutation.mutate(null);
+  };
+
+  const handleLongPressMapView = ({nativeEvent}: LongPressEvent) => {
+    setSelectLocation(nativeEvent.coordinate);
   };
 
   const handlePressUserLocation = () => {
@@ -62,7 +74,23 @@ function MapHomeScreen({}) {
           longitudeDelta: 0.0421,
         }}
         customMapStyle={mapStyle}
-      />
+        onLongPress={handleLongPressMapView}>
+        <CustomMarker
+          score={1}
+          color="RED"
+          coordinate={{latitude: 37.496486063, longitude: 127.028361548}}
+        />
+        <CustomMarker
+          score={3}
+          color="BLUE"
+          coordinate={{latitude: 37.506486063, longitude: 127.028361548}}
+        />
+        {selectLocation && (
+          <Callout>
+            <Marker coordinate={selectLocation} />
+          </Callout>
+        )}
+      </MapView>
       <Pressable
         style={[styles.drawerButton, {top: inset.top || 20}]}
         onPress={() => navigation.openDrawer()}>
