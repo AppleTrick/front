@@ -13,6 +13,7 @@ import useUserLocation from '@/hooks/useUserLocation';
 import usePermissions from '@/hooks/usePermissions';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import mapStyle from '@/style/mapStyle';
 
 type Navigation = CompositeNavigationProp<
   StackNavigationProp<MapStackParamList>,
@@ -60,6 +61,7 @@ function MapHomeScreen({}) {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
+        customMapStyle={mapStyle}
       />
       <Pressable
         style={[styles.drawerButton, {top: inset.top || 20}]}
