@@ -7,7 +7,7 @@ import MapView, {
   Marker,
   PROVIDER_GOOGLE,
 } from 'react-native-maps';
-import {colors} from '@/constants';
+import {alerts, colors, mapNavigations} from '@/constants';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {CompositeNavigationProp, useNavigation} from '@react-navigation/native';
 import {MapStackParamList} from '@/navigations/stack/MapStackNavigator';
@@ -32,7 +32,7 @@ function MapHomeScreen({}) {
   const navigation = useNavigation<Navigation>();
   const mapRef = useRef<MapView | null>(null);
   const {userLocation, isUserLocationError} = useUserLocation();
-  const [selectLocation, setSelectLocation] = useState<LatLng>();
+  const [selectLocation, setSelectLocation] = useState<LatLng | null>();
 
   usePermissions('LOCATION');
 
@@ -56,10 +56,14 @@ function MapHomeScreen({}) {
   const handlePressAddPost = () => {
     if (!selectLocation) {
       return Alert.alert(
-        '추가할 위치를 선택해주세요',
-        '지도를 길게 누르면 위치가 선택됩니다.',
+        alerts.NOT_SELECTED_LOCATION.TITLE,
+        alerts.NOT_SELECTED_LOCATION.DESCRIPTION,
       );
     }
+
+    navigation.navigate(mapNavigations.ADD_POST, {location: selectLocation});
+
+    setSelectLocation(null);
   };
 
   return (

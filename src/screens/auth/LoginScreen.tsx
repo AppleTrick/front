@@ -10,8 +10,8 @@ import useAuth from '@/hooks/queries/useAuth';
 interface LoginScreenProps {}
 
 function LoginScreen({}: LoginScreenProps) {
-  const passwordRef = useRef<TextInput | null>(null);
   const {loginMutation} = useAuth();
+  const passwordRef = useRef<TextInput | null>(null);
   const login = useForm({
     initialValue: {
       email: '',
