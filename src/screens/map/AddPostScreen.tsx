@@ -1,11 +1,13 @@
 import AddPostHeaderRight from '@/components/AddPostHeaderRight';
 import CustomButton from '@/components/CustomButton';
 import InputField from '@/components/InputField';
+import MarkerSelector from '@/components/MarkerSelector';
 import {colors, mapNavigations} from '@/constants';
 import useMutateCreatePost from '@/hooks/queries/useMutateCreatePost';
 import useForm from '@/hooks/useForm';
+import useGetAddress from '@/hooks/useGetAddress';
 import {MapStackParamList} from '@/navigations/stack/MapStackNavigator';
-import {MarkerColor} from '@/types/domain';
+import {MarkerColor} from '@/types';
 import {validateAddPost} from '@/utils';
 import {StackScreenProps} from '@react-navigation/stack';
 import {useEffect, useRef, useState} from 'react';
@@ -31,7 +33,11 @@ function AddPostScreen({route, navigation}: AddPostScreenProps) {
   });
   const [markerColor, setMarkerColor] = useState<MarkerColor>('RED');
   const [score, setScore] = useState(5);
-  const [address, setAddress] = useState('');
+  const address = useGetAddress(location);
+
+  const handleSelectMarker = (name: MarkerColor) => {
+    setMarkerColor(name);
+  };
 
   const handleSubmit = () => {
     const body = {
@@ -65,7 +71,7 @@ function AddPostScreen({route, navigation}: AddPostScreenProps) {
       <ScrollView style={styles.contentContainer}>
         <View style={styles.inputContainer}>
           <InputField
-            value="dtd"
+            value={address}
             disabled
             icon={
               <Octicons name="location" size={16} color={colors.GRAY_500} />
@@ -89,6 +95,10 @@ function AddPostScreen({route, navigation}: AddPostScreenProps) {
             multiline
             returnKeyType="next"
             {...addPost.getTextInputProps('description')}
+          />
+          <MarkerSelector
+            markerColor={markerColor}
+            onPressMarker={handleSelectMarker}
           />
         </View>
       </ScrollView>

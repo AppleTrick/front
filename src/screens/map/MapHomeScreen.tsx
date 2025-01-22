@@ -22,11 +22,14 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import mapStyle from '@/style/mapStyle';
 import CustomMarker from '@/components/CustomMarker';
 import useGetMarkers from '@/hooks/queries/useGetMarkers';
+import Config from 'react-native-config';
 
 type Navigation = CompositeNavigationProp<
   StackNavigationProp<MapStackParamList>,
   DrawerNavigationProp<MainDrawerParamList>
 >;
+
+console.log('Config.TEST', Config.TEST);
 
 function MapHomeScreen({}) {
   const inset = useSafeAreaInsets();
