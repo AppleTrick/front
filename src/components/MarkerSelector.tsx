@@ -6,6 +6,7 @@ import {MarkerColor} from '@/types';
 interface MarkerSelectorProps {
   markerColor: MarkerColor;
   onPressMarker: (color: MarkerColor) => void;
+  score?: number;
 }
 
 const calegoryList: MarkerColor[] = [
@@ -16,7 +17,11 @@ const calegoryList: MarkerColor[] = [
   'PURPLE',
 ];
 
-function MarkerSelector({markerColor, onPressMarker}: MarkerSelectorProps) {
+function MarkerSelector({
+  markerColor,
+  onPressMarker,
+  score = 5,
+}: MarkerSelectorProps) {
   return (
     <View style={styles.container}>
       <Text style={styles.markerLabel}>마커 선택</Text>
@@ -25,12 +30,13 @@ function MarkerSelector({markerColor, onPressMarker}: MarkerSelectorProps) {
           {calegoryList.map(color => {
             return (
               <Pressable
+                key={color}
                 style={[
                   styles.markerBox,
                   markerColor === color && styles.pressedMarker,
                 ]}
                 onPress={() => onPressMarker(color)}>
-                <CustomMarker color={color} />
+                <CustomMarker color={color} score={score} />
               </Pressable>
             );
           })}

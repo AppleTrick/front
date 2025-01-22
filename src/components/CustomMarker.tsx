@@ -106,8 +106,8 @@ const styles = StyleSheet.create({
   bad: {
     marginLeft: 12,
     marginTop: 12,
+    borderRightColor: 'rgba(255,255,255 / 0.01)',
     borderLeftColor: colors.BLACK,
-    borderLeftWidth: 1,
   },
 });
 
