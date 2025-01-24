@@ -82,6 +82,7 @@ android {
         versionCode 1
         resValue "string", "build_config_package", "com.matzipapp"
         versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
     }
     signingConfigs {
         debug {

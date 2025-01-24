@@ -1,6 +1,7 @@
 import AddPostHeaderRight from '@/components/AddPostHeaderRight';
 import CustomButton from '@/components/CustomButton';
 import DatePickerOption from '@/components/DatePickerOption';
+import ImageInput from '@/components/ImageInput';
 import InputField from '@/components/InputField';
 import MarkerSelector from '@/components/MarkerSelector';
 import ScoreInput from '@/components/ScoreInput';
@@ -8,7 +9,9 @@ import {colors, mapNavigations} from '@/constants';
 import useMutateCreatePost from '@/hooks/queries/useMutateCreatePost';
 import useForm from '@/hooks/useForm';
 import useGetAddress from '@/hooks/useGetAddress';
+import useImagePicker from '@/hooks/useImagePicker';
 import useModal from '@/hooks/useModal';
+import usePermissions from '@/hooks/usePermissions';
 import {MapStackParamList} from '@/navigations/stack/MapStackNavigator';
 import {MarkerColor} from '@/types';
 import {getDateWithSeparator, validateAddPost} from '@/utils';
@@ -35,18 +38,25 @@ function AddPostScreen({route, navigation}: AddPostScreenProps) {
     },
     validate: validateAddPost,
   });
-  const [markerColor, setMarkerColor] = useState<MarkerColor>('RED');
-  const [score, setScore] = useState(5);
+  const datePickerModal = useModal();
   const [date, setDate] = useState(new Date());
   const [isPicked, setIsPicked] = useState(false);
-  const dateOption = useModal();
+  const [markerColor, setMarkerColor] = useState<MarkerColor>('RED');
+  const [score, setScore] = useState(5);
+  const imagePicker = useImagePicker({
+    initialImages: [],
+  });
+
+  usePermissions('PHOTO');
+
+  // console.log('imagePicker.imageUris', imagePicker.imageUris);
 
   const handleChangeDate = (pickedDate: Date) => {
     setDate(pickedDate);
   };
 
   const handleConfirmDate = () => {
-    dateOption.hide();
+    datePickerModal.hide();
     setIsPicked(true);
   };
 
@@ -100,7 +110,7 @@ function AddPostScreen({route, navigation}: AddPostScreenProps) {
             variant="outlined"
             size="large"
             label={isPicked ? getDateWithSeparator(date, '. ') : '날짜 선택'}
-            onPress={dateOption.show}
+            onPress={datePickerModal.show}
           />
           <InputField
             placeholder="제목을 입력하세요"
@@ -126,9 +136,10 @@ function AddPostScreen({route, navigation}: AddPostScreenProps) {
             score={score}
           />
           <ScoreInput score={score} onChangeScore={handleChangeScore} />
+          <ImageInput onChange={imagePicker.handleChange} />
           <DatePickerOption
             date={date}
-            isVisible={dateOption.isVisible}
+            isVisible={datePickerModal.isVisible}
             onChangeDate={handleChangeDate}
             onConfirmData={handleConfirmDate}
           />

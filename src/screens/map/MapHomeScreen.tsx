@@ -80,9 +80,14 @@ function MapHomeScreen({}) {
         showsUserLocation
         followsUserLocation
         showsMyLocationButton={false}
-        initialRegion={{
-          latitude: userLocation.latitude,
-          longitude: userLocation.longitude,
+        // initialRegion={{
+        //   latitude: userLocation.latitude,
+        //   longitude: userLocation.longitude,
+        //   latitudeDelta: 0.0922,
+        //   longitudeDelta: 0.0421,
+        // }}
+        region={{
+          ...userLocation,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
