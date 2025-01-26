@@ -4,6 +4,7 @@ import DatePickerOption from '@/components/DatePickerOption';
 import ImageInput from '@/components/ImageInput';
 import InputField from '@/components/InputField';
 import MarkerSelector from '@/components/MarkerSelector';
+import PreviewImageList from '@/components/PreviewImageList';
 import ScoreInput from '@/components/ScoreInput';
 import {colors, mapNavigations} from '@/constants';
 import useMutateCreatePost from '@/hooks/queries/useMutateCreatePost';
@@ -17,7 +18,14 @@ import {MarkerColor} from '@/types';
 import {getDateWithSeparator, validateAddPost} from '@/utils';
 import {StackScreenProps} from '@react-navigation/stack';
 import {useEffect, useRef, useState} from 'react';
-import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {
+  Image,
+  Platform,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  View,
+} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import Octicons from 'react-native-vector-icons/Octicons';
 
@@ -136,7 +144,10 @@ function AddPostScreen({route, navigation}: AddPostScreenProps) {
             score={score}
           />
           <ScoreInput score={score} onChangeScore={handleChangeScore} />
-          <ImageInput onChange={imagePicker.handleChange} />
+          <View style={styles.imagesViewer}>
+            <ImageInput onChange={imagePicker.handleChange} />
+            <PreviewImageList imageUris={imagePicker.imageUris} />
+          </View>
           <DatePickerOption
             date={date}
             isVisible={datePickerModal.isVisible}
@@ -161,6 +172,9 @@ const styles = StyleSheet.create({
   inputContainer: {
     gap: 20,
     marginBottom: 20,
+  },
+  imagesViewer: {
+    flexDirection: 'row',
   },
 });
 
