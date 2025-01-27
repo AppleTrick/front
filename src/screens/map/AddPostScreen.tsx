@@ -18,14 +18,7 @@ import {MarkerColor} from '@/types';
 import {getDateWithSeparator, validateAddPost} from '@/utils';
 import {StackScreenProps} from '@react-navigation/stack';
 import {useEffect, useRef, useState} from 'react';
-import {
-  Image,
-  Platform,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  View,
-} from 'react-native';
+import {SafeAreaView, ScrollView, StyleSheet, View} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import Octicons from 'react-native-vector-icons/Octicons';
 
@@ -57,7 +50,7 @@ function AddPostScreen({route, navigation}: AddPostScreenProps) {
 
   usePermissions('PHOTO');
 
-  console.log('imagePicker.imageUris', imagePicker.imageUris);
+  // console.log('imagePicker.imageUris', imagePicker.imageUris);
 
   const handleChangeDate = (pickedDate: Date) => {
     setDate(pickedDate);
@@ -83,7 +76,7 @@ function AddPostScreen({route, navigation}: AddPostScreenProps) {
       description: addPost.values.description,
       color: markerColor,
       score: score,
-      imageUris: [],
+      imageUris: imagePicker.imageUris,
     };
 
     createPost.mutate(

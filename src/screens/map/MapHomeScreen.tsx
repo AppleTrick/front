@@ -1,5 +1,4 @@
 import {Alert, Pressable, StyleSheet, Text, View} from 'react-native';
-import useAuth from '@/hooks/queries/useAuth';
 import MapView, {
   Callout,
   LatLng,
@@ -23,13 +22,15 @@ import mapStyle from '@/style/mapStyle';
 import CustomMarker from '@/components/CustomMarker';
 import useGetMarkers from '@/hooks/queries/useGetMarkers';
 import Config from 'react-native-config';
+import MarkerModal from '@/components/MarkerModal';
+import useModal from '@/hooks/useModal';
 
 type Navigation = CompositeNavigationProp<
   StackNavigationProp<MapStackParamList>,
   DrawerNavigationProp<MainDrawerParamList>
 >;
 
-console.log('Config.TEST', Config.TEST);
+// console.log('Config.TEST', Config.TEST);
 
 function MapHomeScreen({}) {
   const inset = useSafeAreaInsets();
@@ -38,8 +39,25 @@ function MapHomeScreen({}) {
   const {userLocation, isUserLocationError} = useUserLocation();
   const [selectLocation, setSelectLocation] = useState<LatLng | null>();
   const {data: markers = []} = useGetMarkers();
+  const [markerId, setMarkerId] = useState<number | null>(null);
+  const markerModal = useModal();
 
   usePermissions('LOCATION');
+
+  const moveMapView = (coordinate: LatLng) => {
+    mapRef.current?.animateToRegion({
+      ...coordinate,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    });
+  };
+
+  const handlePressMarker = (id: number, coordinate: LatLng) => {
+    // 마커 클릭할때
+    moveMapView(coordinate);
+    setMarkerId(id);
+    markerModal.show();
+  };
 
   const handleLongPressMapView = ({nativeEvent}: LongPressEvent) => {
     setSelectLocation(nativeEvent.coordinate);
@@ -50,12 +68,7 @@ function MapHomeScreen({}) {
       // 에러메세지 표시하기
       return;
     }
-    mapRef.current?.animateToRegion({
-      latitude: userLocation.latitude,
-      longitude: userLocation.longitude,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
-    });
+    moveMapView(userLocation);
   };
 
   const handlePressAddPost = () => {
@@ -80,12 +93,6 @@ function MapHomeScreen({}) {
         showsUserLocation
         followsUserLocation
         showsMyLocationButton={false}
-        // initialRegion={{
-        //   latitude: userLocation.latitude,
-        //   longitude: userLocation.longitude,
-        //   latitudeDelta: 0.0922,
-        //   longitudeDelta: 0.0421,
-        // }}
         region={{
           ...userLocation,
           latitudeDelta: 0.0922,
@@ -99,6 +106,7 @@ function MapHomeScreen({}) {
             color={color}
             score={score}
             coordinate={coordinate}
+            onPress={() => handlePressMarker(id, coordinate)}
           />
         ))}
         {selectLocation && (
@@ -120,6 +128,11 @@ function MapHomeScreen({}) {
           <MaterialIcons name="my-location" color={colors.WHITE} size={25} />
         </Pressable>
       </View>
+      <MarkerModal
+        markerId={markerId}
+        isVisible={markerModal.isVisible}
+        hide={markerModal.hide}
+      />
     </>
   );
 }
