@@ -22,6 +22,18 @@ function useImagePicker({initialImages = []}: UseImagePickerProps) {
     setImageUris(prev => [...prev, ...uris.map(uri => ({uri}))]);
   };
 
+  const deleteImageUris = (uri: string) => {
+    const newImageUris = imageUris.filter(image => image.uri !== uri);
+    setImageUris(newImageUris);
+  };
+
+  const changeImageUrisOrder = (fromIndex: number, toIndex: number) => {
+    const copyImageUris = [...imageUris];
+    const [removedImage] = copyImageUris.splice(fromIndex, 1);
+    copyImageUris.splice(toIndex, 0, removedImage);
+    setImageUris(copyImageUris);
+  };
+
   const handleChange = () => {
     ImageCropPicker.openPicker({
       mediaType: 'photo',
@@ -34,6 +46,8 @@ function useImagePicker({initialImages = []}: UseImagePickerProps) {
       .then(images => {
         const formData = getFromDataImages(images);
 
+        console.log(formData);
+
         uploadImages.mutate(formData, {
           onSuccess: data => addImageUris(data),
         });
@@ -41,11 +55,17 @@ function useImagePicker({initialImages = []}: UseImagePickerProps) {
       .catch(error => {
         if (error.code !== 'E_PICKER_CANCELLED') {
           // 에러메세지 표시
+          console.log('에러');
         }
       });
   };
 
-  return {imageUris, handleChange};
+  return {
+    imageUris,
+    handleChange,
+    delete: deleteImageUris,
+    changeOrder: changeImageUrisOrder,
+  };
 }
 
 export default useImagePicker;
