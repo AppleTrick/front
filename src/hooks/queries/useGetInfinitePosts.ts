@@ -25,7 +25,7 @@ function useGetInfinitePosts(
     initialPageParam: 1, // 4버전에서는 pageParam 에 값을 1 로 넣어주는 형식으로 구현됨,
     getNextPageParam: (lastPage, allPage) => {
       const lastPost = lastPage[lastPage.length - 1];
-      return lastPost ? allPage.length - 1 : undefined;
+      return lastPost ? allPage.length + 1 : undefined;
     },
     // select : data => data.pages,
     ...queryOptions,

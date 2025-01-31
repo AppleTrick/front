@@ -21,7 +21,6 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import mapStyle from '@/style/mapStyle';
 import CustomMarker from '@/components/CustomMarker';
 import useGetMarkers from '@/hooks/queries/useGetMarkers';
-import Config from 'react-native-config';
 import MarkerModal from '@/components/MarkerModal';
 import useModal from '@/hooks/useModal';
 
