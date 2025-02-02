@@ -1,4 +1,4 @@
-export const colors = {
+const colors = {
   WHITE: '#FFFFFF',
   BLACK: '#000000',
   PINK_200: '#FAE2E9',
@@ -18,3 +18,13 @@ export const colors = {
   GRAY_500: '#8E8E8E',
   GRAY_700: '#575757',
 };
+
+const colorHex = {
+  RED: colors.PINK_400,
+  YELLOW: colors.YELLOW_400,
+  GREEN: colors.GREEN_400,
+  BLUE: colors.BLUE_400,
+  PURPLE: colors.PURPLE_400,
+};
+
+export {colors, colorHex};

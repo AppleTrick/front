@@ -1,13 +1,17 @@
-function getDateWithSeparator(
-  dateString: Date | string,
-  separator: string = '',
-) {
+function getDetails(dateString: Date | string) {
   const date = new Date(dateString);
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
   const day = date.getDate();
 
-  //   console.log(year, month, day);
+  return {year, month, day};
+}
+
+function getDateWithSeparator(
+  dateString: Date | string,
+  separator: string = '',
+) {
+  const {year, month, day} = getDetails(dateString);
   return [
     String(year),
     String(month).padStart(2, '0'),
@@ -15,4 +19,9 @@ function getDateWithSeparator(
   ].join(separator);
 }
 
-export {getDateWithSeparator};
+function getDateLocaleFormat(dateString: Date | string) {
+  const {year, month, day} = getDetails(dateString);
+  return `${year}년 ${month}월 ${day}일`;
+}
+
+export {getDateWithSeparator, getDateLocaleFormat};
