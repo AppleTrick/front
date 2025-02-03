@@ -9,6 +9,9 @@ function useMutateCreatePost(mutationOptions?: useMutationCustomOptions) {
   return useMutation({
     mutationFn: createPost,
     onSuccess: newPost => {
+      queryClient.invalidateQueries({
+        queryKey: [queryKeys.POST, queryKeys.GET_POST],
+      });
       // 재요청을 이용한 방법
       // queryClient.invalidateQueries({
       //   queryKey: [queryKeys.MARKER, queryKeys.GET_MARKERS],
