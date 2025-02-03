@@ -13,7 +13,7 @@ import {MapStackParamList} from '@/navigations/stack/MapStackNavigator';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {MainDrawerParamList} from '@/navigations/drawer/MainDrawerNavigator';
-import {useRef, useState} from 'react';
+import {useState} from 'react';
 import useUserLocation from '@/hooks/useUserLocation';
 import usePermissions from '@/hooks/usePermissions';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -23,6 +23,7 @@ import CustomMarker from '@/components/common/CustomMarker';
 import useGetMarkers from '@/hooks/queries/useGetMarkers';
 import useModal from '@/hooks/useModal';
 import MarkerModal from '@/components/map/MarkerModal';
+import useMoveMapView from '@/hooks/useMoveMapView';
 
 type Navigation = CompositeNavigationProp<
   StackNavigationProp<MapStackParamList>,
@@ -34,22 +35,13 @@ type Navigation = CompositeNavigationProp<
 function MapHomeScreen({}) {
   const inset = useSafeAreaInsets();
   const navigation = useNavigation<Navigation>();
-  const mapRef = useRef<MapView | null>(null);
   const {userLocation, isUserLocationError} = useUserLocation();
   const [selectLocation, setSelectLocation] = useState<LatLng | null>();
   const {data: markers = []} = useGetMarkers();
   const [markerId, setMarkerId] = useState<number | null>(null);
   const markerModal = useModal();
-
+  const {mapRef, moveMapView} = useMoveMapView();
   usePermissions('LOCATION');
-
-  const moveMapView = (coordinate: LatLng) => {
-    mapRef.current?.animateToRegion({
-      ...coordinate,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
-    });
-  };
 
   const handlePressMarker = (id: number, coordinate: LatLng) => {
     // 마커 클릭할때
