@@ -12,14 +12,8 @@ import {MainDrawerParamList} from '@/navigations/drawer/MainDrawerNavigator';
 import {FeedStackParamList} from '@/navigations/stack/FeedStackNavigator';
 import useLocationStore from '@/store/useLocationStore';
 import {getDateLocaleFormat, getLocalApiBaseUrl, SCREEN_WIDTH} from '@/utils';
-import {
-  DrawerNavigationProp,
-  DrawerScreenProps,
-} from '@react-navigation/drawer';
-import {
-  CompositeNavigationProp,
-  CompositeScreenProps,
-} from '@react-navigation/native';
+import {DrawerScreenProps} from '@react-navigation/drawer';
+import {CompositeScreenProps} from '@react-navigation/native';
 import {StackScreenProps} from '@react-navigation/stack';
 import {
   Image,
@@ -57,6 +51,10 @@ function FeedDetailScreen({route, navigation}: FeedDetailScreenProps) {
     });
   };
 
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <>
       <ScrollView
@@ -72,7 +70,7 @@ function FeedDetailScreen({route, navigation}: FeedDetailScreenProps) {
               name="arrow-left"
               size={30}
               color={colors.WHITE}
-              onPress={() => navigation.goBack()}
+              onPress={handleGoBack}
             />
             <Ionicons name="ellipsis-vertical" size={30} color={colors.WHITE} />
           </View>

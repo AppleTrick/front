@@ -2,6 +2,7 @@ import useLocationStore from '@/store/useLocationStore';
 import {useEffect, useRef} from 'react';
 import MapView, {LatLng} from 'react-native-maps';
 
+// 지도가 화면을 이동하는 데 사용되는 hook
 function useMoveMapView() {
   const {moveLocation} = useLocationStore();
   const mapRef = useRef<MapView | null>(null);

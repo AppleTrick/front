@@ -44,11 +44,23 @@ function MarkerModal({markerId, isVisible, hide}: MarkerModalProps) {
   const handlePressModal = () => {
     navigation.navigate(mainNavigations.FEED, {
       screen: feedNavigations.FEED_DETAIL,
-      params: {
-        id: post.id,
-      },
+      params: {id: post.id},
       initial: false,
     });
+    // navigation.reset({
+    //   index: 0,
+    //   routes: [
+    //     {
+    //       name: mainNavigations.FEED,
+    //       params: {
+    //         screen: feedNavigations.FEED_DETAIL,
+    //         params: {
+    //           id: post.id,
+    //         },
+    //       },
+    //     },
+    //   ],
+    // });
   };
 
   return (
@@ -178,3 +190,18 @@ const styles = StyleSheet.create({
 });
 
 export default MarkerModal;
+
+// navigation.reset({
+//   index: 0,
+//   routes: [
+//     {
+//       name: mainNavigations.FEED,
+//       params: {
+//         screen: feedNavigations.FEED_DETAIL,
+//         params: {
+//           id: post.id,
+//         },
+//       },
+//     },
+//   ],
+// });

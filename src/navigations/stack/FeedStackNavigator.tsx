@@ -1,5 +1,7 @@
-import {createStackNavigator} from '@react-navigation/stack';
-import {StyleSheet} from 'react-native';
+import {
+  CardStyleInterpolators,
+  createStackNavigator,
+} from '@react-navigation/stack';
 import {colors, feedNavigations} from '@/constants';
 import FeedHomeScreen from '@/screens/feed/FeedHomeScreen';
 import FeedHomeHeaderLeft from '@/components/feed/FeedHomeHeaderLeft';
@@ -27,6 +29,7 @@ function FeedStackNavigator() {
           fontSize: 15,
         },
         headerTintColor: 'black',
+        headerMode: 'screen',
       }}>
       <Stack.Screen
         name={feedNavigations.FEED_HOME}
@@ -45,12 +48,11 @@ function FeedStackNavigator() {
           cardStyle: {
             backgroundColor: colors.GRAY_100,
           },
+          cardStyleInterpolator:
+            CardStyleInterpolators.forFadeFromBottomAndroid, // 페이드 인 효과 적용
         })}
       />
     </Stack.Navigator>
   );
 }
-
-const styles = StyleSheet.create({});
-
 export default FeedStackNavigator;
