@@ -14,7 +14,11 @@ import useLocationStore from '@/store/useLocationStore';
 import {getDateLocaleFormat, getLocalApiBaseUrl, SCREEN_WIDTH} from '@/utils';
 import {DrawerScreenProps} from '@react-navigation/drawer';
 import {CompositeScreenProps} from '@react-navigation/native';
-import {StackScreenProps} from '@react-navigation/stack';
+import {
+  CardStyleInterpolators,
+  StackScreenProps,
+} from '@react-navigation/stack';
+import {useLayoutEffect} from 'react';
 import {
   Image,
   Pressable,
@@ -34,15 +38,29 @@ type FeedDetailScreenProps = CompositeScreenProps<
 >;
 
 function FeedDetailScreen({route, navigation}: FeedDetailScreenProps) {
-  const {id} = route.params;
+  const {id, isModal} = route.params;
   const {data: post, isPending, isError} = useGetPost(id);
   const insets = useSafeAreaInsets();
   const {setMoveLocation} = useLocationStore();
 
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      ...(isModal
+        ? {
+            // Modal에서 이동한 경우
+            cardStyleInterpolator: CardStyleInterpolators.forNoAnimation, // 애니메이션 없음
+          }
+        : {
+            // FeedHome에서 이동한 경우
+            cardStyleInterpolator:
+              CardStyleInterpolators.forFadeFromBottomAndroid, // 기존 애니메이션
+          }),
+    });
+  }, [navigation, isModal]); // isModal 값이 변경될 때마다 옵션 업데이트
+
   if (isPending || isError) {
     return <></>;
   }
-
   const handlePressLocation = () => {
     const {latitude, longitude} = post;
     setMoveLocation({latitude, longitude});

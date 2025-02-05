@@ -44,23 +44,12 @@ function MarkerModal({markerId, isVisible, hide}: MarkerModalProps) {
   const handlePressModal = () => {
     navigation.navigate(mainNavigations.FEED, {
       screen: feedNavigations.FEED_DETAIL,
-      params: {id: post.id},
-      initial: false,
+      params: {
+        id: post.id,
+        isModal: true,
+      },
+      initial: true,
     });
-    // navigation.reset({
-    //   index: 0,
-    //   routes: [
-    //     {
-    //       name: mainNavigations.FEED,
-    //       params: {
-    //         screen: feedNavigations.FEED_DETAIL,
-    //         params: {
-    //           id: post.id,
-    //         },
-    //       },
-    //     },
-    //   ],
-    // });
   };
 
   return (

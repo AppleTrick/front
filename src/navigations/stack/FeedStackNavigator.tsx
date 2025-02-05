@@ -9,7 +9,7 @@ import FeedDetailScreen from '@/screens/feed/FeedDetailScreen';
 
 export type FeedStackParamList = {
   [feedNavigations.FEED_HOME]: undefined;
-  [feedNavigations.FEED_DETAIL]: {id: number};
+  [feedNavigations.FEED_DETAIL]: {id: number; isModal?: boolean};
 };
 
 const Stack = createStackNavigator<FeedStackParamList>();
@@ -48,8 +48,8 @@ function FeedStackNavigator() {
           cardStyle: {
             backgroundColor: colors.GRAY_100,
           },
-          cardStyleInterpolator:
-            CardStyleInterpolators.forFadeFromBottomAndroid, // 페이드 인 효과 적용
+          // cardStyleInterpolator:
+          //   CardStyleInterpolators.forFadeFromBottomAndroid, // 페이드 인 효과 적용
         })}
       />
     </Stack.Navigator>
