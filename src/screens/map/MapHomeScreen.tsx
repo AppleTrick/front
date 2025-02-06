@@ -1,4 +1,4 @@
-import {Alert, Pressable, StyleSheet, Text, View} from 'react-native';
+import {Alert, Pressable, StyleSheet, View} from 'react-native';
 import MapView, {
   Callout,
   LatLng,
@@ -6,7 +6,7 @@ import MapView, {
   Marker,
   PROVIDER_GOOGLE,
 } from 'react-native-maps';
-import {alerts, colors, mapNavigations} from '@/constants';
+import {alerts, colors, mapNavigations, numbers} from '@/constants';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {CompositeNavigationProp, useNavigation} from '@react-navigation/native';
 import {MapStackParamList} from '@/navigations/stack/MapStackNavigator';
@@ -40,7 +40,7 @@ function MapHomeScreen({}) {
   const {data: markers = []} = useGetMarkers();
   const [markerId, setMarkerId] = useState<number | null>(null);
   const markerModal = useModal();
-  const {mapRef, moveMapView} = useMoveMapView();
+  const {mapRef, moveMapView, handleChangeDelta} = useMoveMapView();
   usePermissions('LOCATION');
 
   const handlePressMarker = (id: number, coordinate: LatLng) => {
@@ -84,10 +84,10 @@ function MapHomeScreen({}) {
         showsUserLocation
         followsUserLocation
         showsMyLocationButton={false}
+        onRegionChangeComplete={handleChangeDelta}
         region={{
           ...userLocation,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
+          ...numbers.INITIAL_DELTA,
         }}
         customMapStyle={mapStyle}
         onLongPress={handleLongPressMapView}>

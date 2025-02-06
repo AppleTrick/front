@@ -48,7 +48,6 @@ function MarkerModal({markerId, isVisible, hide}: MarkerModalProps) {
         id: post.id,
         isModal: true,
       },
-      initial: true,
     });
   };
 

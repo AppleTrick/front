@@ -70,7 +70,12 @@ function FeedDetailScreen({route, navigation}: FeedDetailScreenProps) {
   };
 
   const handleGoBack = () => {
-    navigation.goBack();
+    console.log(isModal);
+    if (isModal) {
+      handlePressLocation();
+    } else {
+      navigation.goBack();
+    }
   };
 
   return (
