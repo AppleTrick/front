@@ -94,7 +94,7 @@ function AddPostScreen({route, navigation}: AddPostScreenProps) {
     navigation.setOptions({
       headerRight: () => AddPostHeaderRight(handleSubmit),
     });
-  });
+  }, [navigation, handleSubmit]);
 
   return (
     <SafeAreaView style={styles.container}>

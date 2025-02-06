@@ -13,7 +13,7 @@ import {MapStackParamList} from '@/navigations/stack/MapStackNavigator';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {MainDrawerParamList} from '@/navigations/drawer/MainDrawerNavigator';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import useUserLocation from '@/hooks/useUserLocation';
 import usePermissions from '@/hooks/usePermissions';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -74,6 +74,11 @@ function MapHomeScreen({}) {
 
     setSelectLocation(null);
   };
+
+  // useEffect(() => {
+  //   console.log('현재 위치 정보:', userLocation);
+  //   console.log('현재 델타 정보:', numbers.INITIAL_DELTA);
+  // }, [userLocation]);
 
   return (
     <>
