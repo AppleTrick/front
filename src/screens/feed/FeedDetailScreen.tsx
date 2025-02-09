@@ -12,6 +12,7 @@ import useGetPost from '@/hooks/queries/useGetPost';
 import useModal from '@/hooks/useModal';
 import {MainDrawerParamList} from '@/navigations/drawer/MainDrawerNavigator';
 import {FeedStackParamList} from '@/navigations/stack/FeedStackNavigator';
+import useDetailStore from '@/store/useDetailPostStore';
 import useLocationStore from '@/store/useLocationStore';
 import {getDateLocaleFormat, getLocalApiBaseUrl, SCREEN_WIDTH} from '@/utils';
 import {DrawerScreenProps} from '@react-navigation/drawer';
@@ -20,7 +21,7 @@ import {
   CardStyleInterpolators,
   StackScreenProps,
 } from '@react-navigation/stack';
-import {useLayoutEffect} from 'react';
+import {useEffect, useLayoutEffect} from 'react';
 import {
   Image,
   Pressable,
@@ -44,6 +45,7 @@ function FeedDetailScreen({route, navigation}: FeedDetailScreenProps) {
   const {data: post, isPending, isError} = useGetPost(id);
   const insets = useSafeAreaInsets();
   const {setMoveLocation} = useLocationStore();
+  const {setDetailPost} = useDetailStore();
   const detailOption = useModal();
 
   useLayoutEffect(() => {
@@ -60,6 +62,10 @@ function FeedDetailScreen({route, navigation}: FeedDetailScreenProps) {
           }),
     });
   }, [navigation, isModal]); // isModal 값이 변경될 때마다 옵션 업데이트
+
+  useEffect(() => {
+    post && setDetailPost(post);
+  }, [post]);
 
   if (isPending || isError) {
     return <></>;
