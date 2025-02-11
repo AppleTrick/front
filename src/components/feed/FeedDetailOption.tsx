@@ -6,7 +6,7 @@ import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {FeedStackParamList} from '@/navigations/stack/FeedStackNavigator';
 import {Alert} from 'react-native';
-import {alerts} from '@/constants';
+import {alerts, feedNavigations} from '@/constants';
 
 interface FeedDetailOptionProps {
   isVisible: boolean;
@@ -43,6 +43,21 @@ function FeedDetailOption({isVisible, hideOption}: FeedDetailOptionProps) {
     ]);
   };
 
+  const handleEditPost = () => {
+    if (!detailPost) {
+      return;
+    }
+
+    navigation.navigate(feedNavigations.EDIT_POST, {
+      location: {
+        latitude: detailPost.latitude,
+        longitude: detailPost.longitude,
+      },
+    });
+
+    hideOption();
+  };
+
   return (
     <CompoundOption isVisible={isVisible} hideOption={hideOption}>
       <CompoundOption.BackGround>
@@ -51,7 +66,9 @@ function FeedDetailOption({isVisible, hideOption}: FeedDetailOptionProps) {
             삭제하기
           </CompoundOption.Button>
           <CompoundOption.Divider />
-          <CompoundOption.Button>수정하기</CompoundOption.Button>
+          <CompoundOption.Button onPress={handleEditPost}>
+            수정하기
+          </CompoundOption.Button>
         </CompoundOption.Container>
         <CompoundOption.Container>
           <CompoundOption.Button onPress={hideOption}>
