@@ -8,6 +8,7 @@ import {
   mainNavigations,
   mapNavigations,
 } from '@/constants';
+import useMutateFavoritePost from '@/hooks/queries/useFavoritePost';
 import useGetPost from '@/hooks/queries/useGetPost';
 import useModal from '@/hooks/useModal';
 import {MainDrawerParamList} from '@/navigations/drawer/MainDrawerNavigator';
@@ -43,6 +44,7 @@ type FeedDetailScreenProps = CompositeScreenProps<
 function FeedDetailScreen({route, navigation}: FeedDetailScreenProps) {
   const {id, isModal} = route.params;
   const {data: post, isPending, isError} = useGetPost(id);
+  const favoriteMutation = useMutateFavoritePost();
   const insets = useSafeAreaInsets();
   const {setMoveLocation} = useLocationStore();
   const {setDetailPost} = useDetailStore();
@@ -85,6 +87,10 @@ function FeedDetailScreen({route, navigation}: FeedDetailScreenProps) {
     } else {
       navigation.goBack();
     }
+  };
+
+  const handlePressFavorite = () => {
+    favoriteMutation.mutate(post.id);
   };
 
   return (
@@ -179,11 +185,16 @@ function FeedDetailScreen({route, navigation}: FeedDetailScreenProps) {
             insets.bottom === 0 && styles.tabContainerNoInsets,
           ]}>
           <Pressable
-            style={pressed => [
+            style={({pressed}) => [
               pressed && styles.bookmarkerPressedContainer,
               styles.bookmarkerContainer,
-            ]}>
-            <Octicons name="star-fill" size={30} color={colors.GRAY_100} />
+            ]}
+            onPress={handlePressFavorite}>
+            <Octicons
+              name="star-fill"
+              size={30}
+              color={post.isFavorite ? colors.YELLOW_500 : colors.GRAY_100}
+            />
           </Pressable>
           <CustomButton
             label="위치보기"

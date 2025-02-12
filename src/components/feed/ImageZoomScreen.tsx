@@ -15,7 +15,9 @@ function ImageZoomScreen({route}: ImageZoomScreenProps) {
   const {index} = route.params;
   const {detailPost} = useDetailStore();
 
-  return <ImageCarousel images={detailPost?.images ?? []} />;
+  return (
+    <ImageCarousel images={detailPost?.images ?? []} pressedIndex={index} />
+  );
 }
 
 const styles = StyleSheet.create({});

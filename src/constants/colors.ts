@@ -8,6 +8,7 @@ const colors = {
   RED_300: '#FFB4B4',
   RED_500: '#FF5F5F',
   YELLOW_400: '#FFE594',
+  YELLOW_500: '#FACC15',
   GREEN_400: '#CCE6BA',
   BLUE_400: '#B4E0FF',
   BLUE_500: '#0D8AFF',
