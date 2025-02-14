@@ -9,7 +9,7 @@ import ImageZoomScreen from '@/components/feed/ImageZoomScreen';
 
 export type FeedStackParamList = {
   [feedNavigations.FEED_HOME]: undefined;
-  [feedNavigations.FEED_DETAIL]: {id: number; isModal?: boolean};
+  [feedNavigations.FEED_DETAIL]: {id: number};
   [feedNavigations.EDIT_POST]: {location: LatLng};
   [feedNavigations.IMAGE_ZOOM]: {index: number};
 };
@@ -50,8 +50,6 @@ function FeedStackNavigator() {
           cardStyle: {
             backgroundColor: colors.GRAY_100,
           },
-          // cardStyleInterpolator:
-          //   CardStyleInterpolators.forFadeFromBottomAndroid, // 페이드 인 효과 적용
         })}
       />
       <Stack.Screen
