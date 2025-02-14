@@ -1,3 +1,4 @@
+import FeedFavoriteList from '@/components/feed/FeedFavoriteList';
 import {colors} from '@/constants';
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 
@@ -6,7 +7,7 @@ interface FeedFavoriteScreenProps {}
 function FeedFavoriteScreen({}: FeedFavoriteScreenProps) {
   return (
     <SafeAreaView style={styles.container}>
-      <Text>즐겨찾기 스크린</Text>
+      <FeedFavoriteList />
     </SafeAreaView>
   );
 }

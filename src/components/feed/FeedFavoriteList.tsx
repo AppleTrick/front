@@ -1,16 +1,17 @@
-import {FlatList, StyleSheet} from 'react-native';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 import useGetInfinitePosts from '@/hooks/queries/useGetInfinitePosts';
 import {useState} from 'react';
 import FeedItem from './FeedItem';
+import useGetInfinteFavoritePosts from '@/hooks/queries/useGetInfinteFavoritePosts';
 
-function FeedList() {
+function FeedFavoriteList() {
   const {
     data: posts,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
     refetch,
-  } = useGetInfinitePosts();
+  } = useGetInfinteFavoritePosts();
 
   const [isRefreshing, setIsRefreshing] = useState(false);
 
@@ -30,12 +31,23 @@ function FeedList() {
     }
   };
 
+  const emptyComponent = () => {
+    return (
+      <View>
+        <Text style={{textAlign: 'center'}}>
+          즐겨찾기한 컴포넌트가 존재하지 않습니다
+        </Text>
+      </View>
+    );
+  };
+
   return (
     <FlatList
       data={posts?.pages.flat()}
       renderItem={({item}) => <FeedItem post={item} />}
       keyExtractor={item => String(item.id)}
       numColumns={2}
+      ListEmptyComponent={emptyComponent}
       contentContainerStyle={styles.contentContainer}
       onEndReached={handleEndReached} // 스크롤이 마지막이 닿았을때 작동하는 함수
       onEndReachedThreshold={0.5} // 스크롤이 완전 닿기 전에 호출
@@ -53,4 +65,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FeedList;
+export default FeedFavoriteList;
