@@ -1,7 +1,4 @@
-import {
-  CardStyleInterpolators,
-  createStackNavigator,
-} from '@react-navigation/stack';
+import {createStackNavigator} from '@react-navigation/stack';
 import {colors, feedNavigations} from '@/constants';
 import FeedHomeScreen from '@/screens/feed/FeedHomeScreen';
 import FeedHomeHeaderLeft from '@/components/feed/FeedHomeHeaderLeft';

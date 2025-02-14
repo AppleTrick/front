@@ -9,10 +9,11 @@ import CustomDrawerContent from './CustomDrawerContent';
 import FeedStackNavigator, {
   FeedStackParamList,
 } from '../stack/FeedStackNavigator';
+import FeedTabNavigator, {FeedTabParamList} from '../tab/FeedTabNavigator';
 
 export type MainDrawerParamList = {
   [mainNavigations.HOME]: NavigatorScreenParams<MapStackParamList>;
-  [mainNavigations.FEED]: NavigatorScreenParams<FeedStackParamList>;
+  [mainNavigations.FEED]: NavigatorScreenParams<FeedTabParamList>;
   [mainNavigations.CALENDAR]: undefined;
 };
 
@@ -73,11 +74,8 @@ const MainDrawerNavigator = () => {
       />
       <Drawer.Screen
         name={mainNavigations.FEED}
-        component={FeedStackNavigator}
+        component={FeedTabNavigator}
         options={{title: '피드'}}
-        initialParams={{
-          screen: feedNavigations.FEED_HOME,
-        }}
       />
       <Drawer.Screen
         name={mainNavigations.CALENDAR}
