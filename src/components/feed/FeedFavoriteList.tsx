@@ -34,7 +34,7 @@ function FeedFavoriteList() {
   const emptyComponent = () => {
     return (
       <View>
-        <Text style={{textAlign: 'center'}}>
+        <Text style={styles.emptyStyle}>
           즐겨찾기한 컴포넌트가 존재하지 않습니다
         </Text>
       </View>
@@ -62,6 +62,9 @@ function FeedFavoriteList() {
 const styles = StyleSheet.create({
   contentContainer: {
     padding: 15,
+  },
+  emptyStyle: {
+    textAlign: 'center',
   },
 });
 
