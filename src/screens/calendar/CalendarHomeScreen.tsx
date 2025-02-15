@@ -1,14 +1,21 @@
+import Calendar from '@/components/common/calendar/Calendar';
+import {colors} from '@/constants';
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 
 function CalendarHomeScreen({}) {
   return (
-    <View>
-      <Text>캘린더</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Calendar />
+    </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.WHITE,
+  },
+});
 
 export default CalendarHomeScreen;
