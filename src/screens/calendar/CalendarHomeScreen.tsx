@@ -1,12 +1,19 @@
 import Calendar from '@/components/common/calendar/Calendar';
 import {colors} from '@/constants';
-import React from 'react';
+import {getMonthYearDetails, getNewMonthYear} from '@/utils';
+import React, {useState} from 'react';
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 
 function CalendarHomeScreen({}) {
+  const currentMonthYear = getMonthYearDetails(new Date());
+  const [monthYear, setMonthYear] = useState(currentMonthYear);
+
+  const handleUpdateMonth = (increment: number) => {
+    setMonthYear(prev => getNewMonthYear(prev, increment));
+  };
   return (
     <SafeAreaView style={styles.container}>
-      <Calendar />
+      <Calendar monthYear={monthYear} onChangeMonth={handleUpdateMonth} />
     </SafeAreaView>
   );
 }

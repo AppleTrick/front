@@ -2,22 +2,44 @@ import {colors} from '@/constants';
 import {Text} from 'react-native';
 import {Pressable, StyleSheet, View} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-interface CalendarProps {}
+import DayOfWeeks from './DayOfWeeks';
+import {MonthYear} from '@/utils';
 
-function Calendar({}: CalendarProps) {
+interface CalendarProps {
+  monthYear: MonthYear;
+  onChangeMonth: (increment: number) => void;
+}
+
+function Calendar({monthYear, onChangeMonth}: CalendarProps) {
+  const {month, year} = monthYear;
   return (
-    <View style={styles.headerContainer}>
-      <Pressable style={styles.monthButtonContainer}>
-        <Ionicons name="arrow-back" size={25} color={colors.BLACK} />
-      </Pressable>
-      <Pressable style={styles.monthYearContainer}>
-        <Text style={styles.titleText}>2025년 2월</Text>
-      </Pressable>
-      <Pressable style={styles.monthButtonContainer}>
-        <Ionicons name="arrow-forward" size={25} color={colors.BLACK} />
-      </Pressable>
-    </View>
+    <>
+      <View style={styles.headerContainer}>
+        <Pressable
+          onPress={() => onChangeMonth(-1)}
+          style={styles.monthButtonContainer}>
+          <Ionicons name="arrow-back" size={25} color={colors.BLACK} />
+        </Pressable>
+        <Pressable style={styles.monthYearContainer}>
+          <Text style={styles.titleText}>
+            {year}년 {month}월
+          </Text>
+          <MaterialIcons
+            name="keyboard-arrow-down"
+            size={20}
+            color={colors.BLACK}
+          />
+        </Pressable>
+        <Pressable
+          onPress={() => onChangeMonth(1)}
+          style={styles.monthButtonContainer}>
+          <Ionicons name="arrow-forward" size={25} color={colors.BLACK} />
+        </Pressable>
+      </View>
+      <DayOfWeeks />
+    </>
   );
 }
 
