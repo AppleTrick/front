@@ -36,7 +36,7 @@ function CalendarHomeScreen({}) {
         selectedDate={selectedDate}
         onPressDate={handlePressDate}
       />
-      {/* <EventList posts={posts[selectedDate]} /> */}
+      <EventList posts={posts[selectedDate]} />
     </SafeAreaView>
   );
 }
