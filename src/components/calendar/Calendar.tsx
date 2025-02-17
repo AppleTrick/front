@@ -5,16 +5,28 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import DayOfWeeks from './DayOfWeeks';
-import {MonthYear} from '@/utils';
+import {isSameAsCurrentDate, MonthYear} from '@/utils';
 import DateBox from './DateBox';
 
-interface CalendarProps {
+interface CalendarProps<T> {
   monthYear: MonthYear;
+  selectedDate: number;
+  schedules: Record<number, T>;
   onChangeMonth: (increment: number) => void;
+  onPressDate: (date: number) => void;
 }
 
-function Calendar({monthYear, onChangeMonth}: CalendarProps) {
+function Calendar<T>({
+  monthYear,
+  schedules,
+  onChangeMonth,
+  selectedDate,
+  onPressDate,
+}: CalendarProps<T>) {
   const {month, year, lastDate, firstDOW} = monthYear;
+
+  console.log(schedules);
+
   return (
     <>
       <View style={styles.headerContainer}>
@@ -46,7 +58,15 @@ function Calendar({monthYear, onChangeMonth}: CalendarProps) {
             id: i,
             date: i - firstDOW + 1,
           }))}
-          renderItem={({item}) => <DateBox date={item.date} />}
+          renderItem={({item}) => (
+            <DateBox
+              isToday={isSameAsCurrentDate(year, month, item.date)}
+              date={item.date}
+              selectedDate={selectedDate}
+              onPressDate={onPressDate}
+              hasSchedule={Boolean(schedules[item.date])}
+            />
+          )}
           keyExtractor={item => String(item.id)}
           numColumns={7}
         />

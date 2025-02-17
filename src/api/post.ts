@@ -70,6 +70,23 @@ const getSearchPosts = async (
   return data;
 };
 
+type CaledarPost = {
+  id: number;
+  title: string;
+  address: string;
+};
+
+type ResponseCalendarPost = Record<number, CaledarPost[]>;
+
+const getCaledarPosts = async (
+  year: number,
+  month: number,
+): Promise<ResponseCalendarPost> => {
+  const {data} = await axiosInstance.get(`/posts?year=${year}&month=${month}`);
+
+  return data;
+};
+
 export {
   createPost,
   getPost,
@@ -79,10 +96,13 @@ export {
   updateFavoritePost,
   getFavoritePosts,
   getSearchPosts,
+  getCaledarPosts,
 };
 export type {
   ResponsePost,
   RequestCreatePost,
   ResponseSinglePost,
   RequestUpdatePost,
+  CaledarPost,
+  ResponseCalendarPost,
 };
