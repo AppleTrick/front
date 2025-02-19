@@ -1,7 +1,7 @@
 import {getCaledarPosts, ResponseCalendarPost} from '@/api';
 import {queryKeys} from '@/constants';
 import {useQueryCustomOptions} from '@/types';
-import {useQuery} from '@tanstack/react-query';
+import {keepPreviousData, useQuery} from '@tanstack/react-query';
 
 function useGetCalendarPosts(
   year: number,
@@ -11,8 +11,13 @@ function useGetCalendarPosts(
   return useQuery({
     queryFn: () => getCaledarPosts(year, month),
     queryKey: [queryKeys.POST, queryKeys.GET_CALENDAR_POSTS, year, month],
+    placeholderData: keepPreviousData,
+
     ...queryOptions,
   });
 }
+
+// v4 버젼에서는
+// keepPreviousData  : true  로 하면 될것
 
 export default useGetCalendarPosts;

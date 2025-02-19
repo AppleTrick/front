@@ -15,6 +15,9 @@ function useMutateDeletePost(mutationOptions?: useMutationCustomOptions) {
       queryClient.invalidateQueries({
         queryKey: [queryKeys.MARKER, queryKeys.GET_MARKERS],
       });
+      queryClient.invalidateQueries({
+        queryKey: [queryKeys.POST, queryKeys.GET_CALENDAR_POSTS],
+      });
 
       // 캐시 직접 업데이트
       //   queryClient.setQueryData<Marker[]>(
