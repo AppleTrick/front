@@ -8,6 +8,7 @@ module.exports = {
     'react/self-closing-comp': 'off',
     'react-hooks/exhaustive-deps': 'off',
     'prettier/prettier': 'off',
+    'react-native/no-inline-styles': 'off',
   },
   parserOptions: {
     requireConfigFile: false,
