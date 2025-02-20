@@ -25,6 +25,7 @@ import useModal from '@/hooks/useModal';
 import MarkerModal from '@/components/map/MarkerModal';
 import useMoveMapView from '@/hooks/useMoveMapView';
 import Toast from 'react-native-toast-message';
+import Config from 'react-native-config';
 
 type Navigation = CompositeNavigationProp<
   StackNavigationProp<MapStackParamList>,
@@ -80,6 +81,10 @@ function MapHomeScreen({}) {
     setSelectLocation(null);
   };
 
+  const handlePressSearch = () => {
+    navigation.navigate(mapNavigations.SEARCH_LOCATION);
+  };
+
   // useEffect(() => {
   //   console.log('현재 위치 정보:', userLocation);
   //   console.log('현재 델타 정보:', numbers.INITIAL_DELTA);
@@ -124,6 +129,9 @@ function MapHomeScreen({}) {
       <View style={styles.buttonList}>
         <Pressable style={styles.mapButton} onPress={handlePressAddPost}>
           <MaterialIcons name="add" color={colors.WHITE} size={25} />
+        </Pressable>
+        <Pressable style={styles.mapButton} onPress={handlePressSearch}>
+          <Ionicons name="search" color={colors.WHITE} size={25} />
         </Pressable>
         <Pressable style={styles.mapButton} onPress={handlePressUserLocation}>
           <MaterialIcons name="my-location" color={colors.WHITE} size={25} />
