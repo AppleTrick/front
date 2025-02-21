@@ -1,4 +1,5 @@
 import SearchInput from '@/components/common/SearchInput';
+import SearchRegionResult from '@/components/map/SearchRegionResult';
 import useSearchLocation from '@/hooks/useSearchLocation';
 import useUserLocation from '@/hooks/useUserLocation';
 import {useState} from 'react';
@@ -25,6 +26,7 @@ function SearchLocationScreen({}: SearchLocationScreenProps) {
         placeholder="검색할 장소를 입력해주세요"
         onSubmit={() => Keyboard.dismiss()}
       />
+      <SearchRegionResult regionInfo={regionInfo} />
     </View>
   );
 }
