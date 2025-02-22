@@ -1,11 +1,13 @@
-import {useMutation, useQuery} from '@tanstack/react-query';
+import {MutationFunction, useMutation, useQuery} from '@tanstack/react-query';
 import {
   getAccessToken,
   getProfile,
+  kakaoLogion,
   logout,
   postLogin,
   postSignup,
   ResponseProfile,
+  ResponseToken,
 } from '@/api/auth';
 import {useMutationCustomOptions, useQueryCustomOptions} from '@/types/common';
 import {removeEncryptStorage, setEncryptStorage} from '@/utils';
@@ -22,9 +24,33 @@ function useSignup(mutationOptions?: useMutationCustomOptions) {
   });
 }
 
-function useLogin(mutationOptions?: useMutationCustomOptions) {
+// 로그인
+// function useLogin(mutationOptions?: useMutationCustomOptions) {
+//   return useMutation({
+//     mutationFn: postLogin,
+//     onSuccess: ({accessToken, refreshToken}) => {
+//       setEncryptStorage(storageKeys.REFRESH_TOKEN, refreshToken);
+//       setHeader('Authorization', `Bearer ${accessToken}`);
+//     },
+//     onSettled: () => {
+//       //
+//       queryClient.refetchQueries({
+//         queryKey: [queryKeys.AUTH, queryKeys.GET_ACCESS_TOKEN],
+//       });
+//       queryClient.invalidateQueries({
+//         queryKey: [queryKeys.AUTH, queryKeys.GET_PROFILE],
+//       });
+//     },
+//     ...mutationOptions,
+//   });
+// }
+
+function useLogin<T>(
+  loginAPI: MutationFunction<ResponseToken, T>,
+  mutationOptions?: useMutationCustomOptions,
+) {
   return useMutation({
-    mutationFn: postLogin,
+    mutationFn: loginAPI,
     onSuccess: ({accessToken, refreshToken}) => {
       setEncryptStorage(storageKeys.REFRESH_TOKEN, refreshToken);
       setHeader('Authorization', `Bearer ${accessToken}`);
@@ -40,6 +66,14 @@ function useLogin(mutationOptions?: useMutationCustomOptions) {
     },
     ...mutationOptions,
   });
+}
+
+function useEmailLogin(mutationOptions?: useMutationCustomOptions) {
+  return useLogin(postLogin, mutationOptions);
+}
+
+function useKakaoLogin(mutationOptions?: useMutationCustomOptions) {
+  return useLogin(kakaoLogion, mutationOptions);
 }
 
 // Refresh 토큰으로 AccessToken을 갱신
@@ -101,7 +135,8 @@ function useAuth() {
   });
 
   const isLogin = getProfileQuery.isSuccess;
-  const loginMutation = useLogin();
+  const loginMutation = useEmailLogin();
+  const kakoLoginMutation = useKakaoLogin();
   const logoutMutation = useLogout();
 
   return {
@@ -110,6 +145,7 @@ function useAuth() {
     isLogin,
     getProfileQuery,
     logoutMutation,
+    kakoLoginMutation,
   };
 }
 
