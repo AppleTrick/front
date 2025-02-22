@@ -13,7 +13,7 @@ import {MapStackParamList} from '@/navigations/stack/MapStackNavigator';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {MainDrawerParamList} from '@/navigations/drawer/MainDrawerNavigator';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import useUserLocation from '@/hooks/useUserLocation';
 import usePermissions from '@/hooks/usePermissions';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -26,6 +26,7 @@ import MarkerModal from '@/components/map/MarkerModal';
 import useMoveMapView from '@/hooks/useMoveMapView';
 import Toast from 'react-native-toast-message';
 import Config from 'react-native-config';
+import useLocationStore from '@/store/useLocationStore';
 
 type Navigation = CompositeNavigationProp<
   StackNavigationProp<MapStackParamList>,
@@ -38,7 +39,7 @@ function MapHomeScreen({}) {
   const inset = useSafeAreaInsets();
   const navigation = useNavigation<Navigation>();
   const {userLocation, isUserLocationError} = useUserLocation();
-  const [selectLocation, setSelectLocation] = useState<LatLng | null>();
+  const {selectLocation, setSelectLocation} = useLocationStore();
   const {data: markers = []} = useGetMarkers();
   const [markerId, setMarkerId] = useState<number | null>(null);
   const markerModal = useModal();
@@ -77,7 +78,6 @@ function MapHomeScreen({}) {
     }
 
     navigation.navigate(mapNavigations.ADD_POST, {location: selectLocation});
-
     setSelectLocation(null);
   };
 

@@ -10,7 +10,10 @@ interface SearchLocationScreenProps {}
 function SearchLocationScreen({}: SearchLocationScreenProps) {
   const [keyword, setKeyword] = useState<string>('');
   const {userLocation} = useUserLocation();
-  const {regionInfo} = useSearchLocation(keyword, userLocation);
+
+  // 페이징 기능
+  const {regionInfo, pageParam, fetchNextPage, fetchPrevPage, hasNextPage} =
+    useSearchLocation(keyword, userLocation);
 
   const handleChangeKeyword = (text: string) => {
     // 디바운스 적용하기
@@ -27,6 +30,8 @@ function SearchLocationScreen({}: SearchLocationScreenProps) {
         onSubmit={() => Keyboard.dismiss()}
       />
       <SearchRegionResult regionInfo={regionInfo} />
+      {/* 페이지네이션 구현하기 */}
+      {/* <PageNation/> */}
     </View>
   );
 }
