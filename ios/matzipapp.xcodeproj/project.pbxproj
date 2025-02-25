@@ -44,6 +44,7 @@
 		4E69CECB2D33DF0D009FFF99 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
 		4E69CECC2D33DF0D009FFF99 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 		4E69CECD2D33DF0D009FFF99 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
+		4EA060832D6DB2E9008DE85A /* matzipapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = matzipapp.entitlements; path = matzipapp/matzipapp.entitlements; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = matzipapp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B890D2B78C523481156A5527 /* libPods-matzipapp-matzipappTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-matzipapp-matzipappTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3B10E8022C0A536CBFD05B8 /* libPods-matzipapp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-matzipapp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +92,7 @@
 		13B07FAE1A68108700A75B9A /* matzipapp */ = {
 			isa = PBXGroup;
 			children = (
+				4EA060832D6DB2E9008DE85A /* matzipapp.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -503,6 +505,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = matzipapp/matzipapp.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = matzipapp/Info.plist;
@@ -530,6 +533,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = matzipapp/matzipapp.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = matzipapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

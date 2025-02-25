@@ -42,7 +42,7 @@ const kakaoLogion = async (token: string): Promise<ResponseToken> => {
 
 type RequestAppleIdentity = {
   identityToken: string;
-  appleId: string;
+  appId: string;
   nickname: string | null;
 };
 
