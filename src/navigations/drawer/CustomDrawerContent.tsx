@@ -57,21 +57,21 @@ const styles = StyleSheet.create({
   contentContainer: {
     backgroundColor: colors.WHITE,
   },
+  nameText: {
+    color: colors.BLACK,
+  },
   userInfoContainer: {
     alignItems: 'center',
     marginTop: 15,
     marginBottom: 30,
     marginHorizontal: 14,
   },
-  nameText: {
-    color: colors.BLACK,
-  },
+
   userImageContainer: {
     width: 70,
     height: 70,
     borderRadius: 35,
     marginBottom: 10,
-    backgroundColor: 'red',
   },
   userImage: {
     width: '100%',
