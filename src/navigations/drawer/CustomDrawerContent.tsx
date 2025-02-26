@@ -1,4 +1,4 @@
-import {colors} from '@/constants';
+import {colors, mainNavigations, settingNavigations} from '@/constants';
 import useAuth from '@/hooks/queries/useAuth';
 import {
   DrawerContentComponentProps,
@@ -7,15 +7,21 @@ import {
 } from '@react-navigation/drawer';
 import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 function CustomDrawerContent(props: DrawerContentComponentProps) {
-  const {getProfileQuery, logoutMutation} = useAuth();
+  const {getProfileQuery} = useAuth();
   const {email, nickname, imageUri, kakaoImageUri} = getProfileQuery.data || {};
 
-  const handleLogout = () => {
-    logoutMutation.mutate(null);
-  };
+  // const handleLogout = () => {
+  //   logoutMutation.mutate(null);
+  // };
 
+  const handlePressSetting = () => {
+    props.navigation.navigate(mainNavigations.SETTING, {
+      screen: settingNavigations.SETTING_HOME,
+    });
+  };
   return (
     <SafeAreaView style={styles.container}>
       <DrawerContentScrollView
@@ -41,11 +47,17 @@ function CustomDrawerContent(props: DrawerContentComponentProps) {
         </View>
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
-      <Pressable
+      {/* <Pressable
         onPress={handleLogout}
         style={{alignItems: 'flex-end', padding: 10}}>
         <Text>로그아웃</Text>
-      </Pressable>
+      </Pressable> */}
+      <View style={styles.bottomContainer}>
+        <Pressable style={styles.bottomMenu} onPress={handlePressSetting}>
+          <MaterialIcons name="settings" color={colors.GRAY_700} size={19} />
+          <Text style={styles.bottomText}>설정</Text>
+        </Pressable>
+      </View>
     </SafeAreaView>
   );
 }
@@ -77,6 +89,24 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     borderRadius: 35,
+  },
+  bottomContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    borderTopWidth: 1,
+    borderTopColor: colors.GRAY_200,
+  },
+  bottomMenu: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+  },
+  bottomText: {
+    fontWeight: '600',
+    fontSize: 15,
+    color: colors.GRAY_700,
   },
 });
 

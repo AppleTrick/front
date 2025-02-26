@@ -57,8 +57,7 @@ const MainDrawerNavigator = () => {
         drawerType: 'front',
         drawerStyle: {
           width: SCREEN_WIDTH * 0.6,
-          // backgroundColor: colors.WHITE,
-          backgroundColor: 'blue',
+          backgroundColor: colors.WHITE,
         },
         drawerActiveTintColor: colors.BLACK,
         drawerInactiveTintColor: colors.GRAY_500,

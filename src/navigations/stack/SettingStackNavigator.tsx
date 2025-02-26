@@ -15,13 +15,14 @@ function SettingStackNavigator() {
   return (
     <Stack.Navigator
       screenOptions={{
+        cardStyle: {
+          backgroundColor: colors.GRAY_100,
+        },
         headerStyle: {
           backgroundColor: 'white',
           shadowColor: 'red',
         },
-        cardStyle: {
-          backgroundColor: 'white',
-        },
+
         headerTitleStyle: {
           fontSize: 15,
         },
