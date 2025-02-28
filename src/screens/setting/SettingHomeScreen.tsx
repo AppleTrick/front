@@ -16,7 +16,6 @@ function SettingHomeScreen({navigation}: SettingHomeScreenProps) {
   };
 
   const handlePressLogout = () => {
-    console.log('로그아웃');
     logoutMutation.mutate(null);
   };
 

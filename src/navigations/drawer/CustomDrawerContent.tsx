@@ -1,5 +1,6 @@
 import {colors, mainNavigations, settingNavigations} from '@/constants';
 import useAuth from '@/hooks/queries/useAuth';
+import {platformCheck} from '@/utils/platformCheck';
 import {
   DrawerContentComponentProps,
   DrawerContentScrollView,
@@ -37,10 +38,13 @@ function CustomDrawerContent(props: DrawerContentComponentProps) {
               />
             )}
             {imageUri === null && !!kakaoImageUri && (
-              <Image source={{uri: kakaoImageUri}} />
+              <Image source={{uri: `${platformCheck()}/${kakaoImageUri}`}} />
             )}
             {imageUri !== null && (
-              <Image source={{uri: imageUri}} style={styles.userImage} />
+              <Image
+                source={{uri: `${platformCheck()}/${imageUri}`}}
+                style={styles.userImage}
+              />
             )}
           </View>
           <Text style={styles.nameText}>{nickname ?? email}</Text>

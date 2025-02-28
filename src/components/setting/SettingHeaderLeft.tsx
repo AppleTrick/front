@@ -19,7 +19,7 @@ function SettingHeaderLeft() {
   return (
     <HeaderButton
       icon={<Ionicons name="menu" color={colors.BLACK} size={25} />}
-      onPress={() => navigation.openDrawer}
+      onPress={() => navigation.openDrawer()}
     />
   );
 }
