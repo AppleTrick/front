@@ -89,6 +89,10 @@ const logout = async () => {
   await axiosInstance.post('/auth/logout');
 };
 
+const deleteAccount = async () => {
+  await axiosInstance.delete('/auth/me');
+};
+
 export {
   postSignup,
   postLogin,
@@ -98,6 +102,7 @@ export {
   kakaoLogion,
   appleLogin,
   editProfile,
+  deleteAccount,
 };
 export type {
   RequestUser,

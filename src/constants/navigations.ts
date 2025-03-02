@@ -28,6 +28,7 @@ const feedNavigations = {
 const settingNavigations = {
   SETTING_HOME: 'SettingHome',
   EDIT_PROFILE: 'EditProfile',
+  DELETE_ACCOUNT: 'DeleteAccount',
 } as const;
 
 const feedTabNavigations = {

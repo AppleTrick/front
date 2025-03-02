@@ -1,7 +1,7 @@
 import InputField from '@/components/common/InputField';
 import EditProfileHeaderRight from '@/components/setting/EditProfileHeaderRight';
 import EditProfileImageOption from '@/components/setting/EditProfileImageOption';
-import {colors, errorMessages} from '@/constants';
+import {colors, errorMessages, settingNavigations} from '@/constants';
 import useAuth from '@/hooks/queries/useAuth';
 import useForm from '@/hooks/useForm';
 import useImagePicker from '@/hooks/useImagePicker';
@@ -11,7 +11,7 @@ import {validateEditProile} from '@/utils';
 import {platformCheck} from '@/utils/platformCheck';
 import {StackScreenProps} from '@react-navigation/stack';
 import {useEffect} from 'react';
-import {Image, Keyboard, Pressable, StyleSheet, View} from 'react-native';
+import {Image, Keyboard, Pressable, StyleSheet, Text, View} from 'react-native';
 import Toast from 'react-native-toast-message';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -109,6 +109,12 @@ const EditProfileScreen = ({navigation}: EditProfileScreenProps) => {
         touched={editProfile.touched.nickname}
         placeholder="닉네임을 입력해주세요"
       />
+      <Pressable
+        style={styles.deleteAccountContainer}
+        onPress={() => navigation.navigate(settingNavigations.DELETE_ACCOUNT)}>
+        <Ionicons name="remove-circle-sharp" size={18} color={colors.RED_500} />
+        <Text style={styles.deleteAccountText}>회원탈퇴</Text>
+      </Pressable>
       <EditProfileImageOption
         isVisible={imageOption.isVisible}
         hideOption={imageOption.hide}
@@ -144,6 +150,22 @@ const styles = StyleSheet.create({
     borderColor: colors.GRAY_200,
     borderRadius: 50,
     borderWidth: 1,
+  },
+  deleteAccountContainer: {
+    position: 'absolute',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 5,
+    right: 20,
+    bottom: 70,
+    backgroundColor: colors.GRAY_100,
+    borderRadius: 10,
+    padding: 10,
+  },
+  deleteAccountText: {
+    color: colors.RED_500,
+    fontSize: 15,
   },
 });
 
