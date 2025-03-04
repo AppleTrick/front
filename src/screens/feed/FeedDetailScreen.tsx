@@ -7,7 +7,9 @@ import {
   feedNavigations,
   mainNavigations,
   mapNavigations,
+  settingNavigations,
 } from '@/constants';
+import useAuth from '@/hooks/queries/useAuth';
 import useMutateFavoritePost from '@/hooks/queries/useFavoritePost';
 import useGetPost from '@/hooks/queries/useGetPost';
 import useModal from '@/hooks/useModal';
@@ -41,6 +43,8 @@ type FeedDetailScreenProps = CompositeScreenProps<
 function FeedDetailScreen({route, navigation}: FeedDetailScreenProps) {
   const {id} = route.params;
   const {data: post, isPending, isError} = useGetPost(id);
+  const {getProfileQuery} = useAuth();
+  const {categories} = getProfileQuery.data || {};
   const favoriteMutation = useMutateFavoritePost();
   const insets = useSafeAreaInsets();
   const {setMoveLocation} = useLocationStore();
@@ -68,6 +72,13 @@ function FeedDetailScreen({route, navigation}: FeedDetailScreenProps) {
 
   const handlePressFavorite = () => {
     favoriteMutation.mutate(post.id);
+  };
+
+  const handlePressCategory = () => {
+    navigation.navigate(mainNavigations.SETTING, {
+      screen: settingNavigations.EDIT_CATEGORY,
+      initial: false,
+    });
   };
 
   return (
@@ -144,6 +155,20 @@ function FeedDetailScreen({route, navigation}: FeedDetailScreenProps) {
                     {backgroundColor: colorHex[post.color]},
                   ]}
                 />
+              </View>
+              <View style={styles.infoColum}>
+                <Text style={styles.infoColumKeyText}>카테고리</Text>
+                {categories?.[post.color] ? (
+                  <Text style={styles.infoColumValueText}>
+                    {categories?.[post.color]}
+                  </Text>
+                ) : (
+                  <Pressable
+                    style={styles.emptyCategoryContainer}
+                    onPress={handlePressCategory}>
+                    <Text style={styles.infoColumKeyText}>미설정</Text>
+                  </Pressable>
+                )}
               </View>
             </View>
           </View>
@@ -257,7 +282,13 @@ const styles = StyleSheet.create({
     height: 10,
     borderRadius: 10,
   },
-
+  emptyCategoryContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.GRAY_300,
+    padding: 2,
+    borderRadius: 2,
+  },
   addressText: {
     color: colors.GRAY_500,
     fontSize: 12,
