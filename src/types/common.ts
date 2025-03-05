@@ -21,4 +21,11 @@ type useQueryCustomOptions<TQueryFnData = unknown, TData = TQueryFnData> = Omit<
   'queryKey'
 >;
 
-export type {ResponseError, useMutationCustomOptions, useQueryCustomOptions};
+type ThemeMode = 'light' | 'dark';
+
+export type {
+  ResponseError,
+  useMutationCustomOptions,
+  useQueryCustomOptions,
+  ThemeMode,
+};

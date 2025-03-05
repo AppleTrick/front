@@ -11,6 +11,7 @@ import SettingStackNavigator, {
   SettingStackParamList,
 } from '../stack/SettingStackNavigator';
 import {SCREEN_WIDTH} from '@/utils';
+import useThemeStore from '@/store/useThemeStore';
 
 export type MainDrawerParamList = {
   [mainNavigations.HOME]: NavigatorScreenParams<MapStackParamList>;
@@ -22,6 +23,7 @@ export type MainDrawerParamList = {
 const Drawer = createDrawerNavigator<MainDrawerParamList>();
 
 function DrawerIcons(route: RouteProp<MainDrawerParamList>, focused: boolean) {
+  const {theme} = useThemeStore();
   let iconName = '';
 
   switch (route.name) {
@@ -43,12 +45,14 @@ function DrawerIcons(route: RouteProp<MainDrawerParamList>, focused: boolean) {
     <MaterialIcons
       name={iconName}
       size={18}
-      color={focused ? colors.BLACK : colors.GRAY_500}
+      color={focused ? colors[theme].BLACK : colors[theme].GRAY_500}
     />
   );
 }
 
 const MainDrawerNavigator = () => {
+  const {theme} = useThemeStore();
+
   return (
     <Drawer.Navigator
       drawerContent={CustomDrawerContent}
@@ -57,12 +61,12 @@ const MainDrawerNavigator = () => {
         drawerType: 'front',
         drawerStyle: {
           width: SCREEN_WIDTH * 0.6,
-          backgroundColor: colors.WHITE,
+          backgroundColor: colors[theme].WHITE,
         },
-        drawerActiveTintColor: colors.BLACK,
-        drawerInactiveTintColor: colors.GRAY_500,
-        drawerActiveBackgroundColor: colors.PINK_200,
-        drawerInactiveBackgroundColor: colors.GRAY_200,
+        drawerActiveTintColor: colors[theme].BLACK,
+        drawerInactiveTintColor: colors[theme].GRAY_500,
+        drawerActiveBackgroundColor: colors[theme].PINK_200,
+        drawerInactiveBackgroundColor: colors[theme].GRAY_200,
         drawerItemStyle: {
           marginVertical: 3,
           borderRadius: 12,

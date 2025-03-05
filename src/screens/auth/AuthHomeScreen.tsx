@@ -19,16 +19,18 @@ import appleAuth, {
 import {SCREEN_WIDTH} from '@/utils';
 import useAuth from '@/hooks/queries/useAuth';
 import Toast from 'react-native-toast-message';
+import useThemeStore from '@/store/useThemeStore';
+import {ThemeMode} from '@/types';
 
 type AuthHomeScreenProps = StackScreenProps<
   AuthStackParamList,
   typeof authNavigations.AUTH_HOME
 >;
 
-const a = colors.BLACK;
-
 function AuthHomeScreen({navigation}: AuthHomeScreenProps) {
   const {appleLoginMutation} = useAuth();
+  const {theme} = useThemeStore();
+  const styles = styling(theme);
 
   const handlePressAppleLogin = async () => {
     try {
@@ -100,42 +102,43 @@ function AuthHomeScreen({navigation}: AuthHomeScreenProps) {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    margin: 30,
-    alignItems: 'center',
-  },
-  imageContainer: {
-    flex: 1.5,
-    width: Dimensions.get('screen').width / 2,
-  },
-  image: {
-    width: '100%',
-    height: '100%',
-  },
-  buttonContainer: {
-    flex: 1,
-    gap: 10,
-    alignItems: 'center',
-  },
-  kakaoButtonContainer: {
-    backgroundColor: '#FEE503',
-  },
-  kakaoButtonText: {
-    color: '#181600',
-  },
-  emailText: {
-    textDecorationLine: 'underline',
-    fontWeight: '500',
-    padding: 10,
-    color: colors.BLACK,
-  },
-  appleButton: {
-    width: SCREEN_WIDTH - 60,
-    height: 45,
-    paddingVertical: 25,
-  },
-});
+const styling = (theme: ThemeMode) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      margin: 30,
+      alignItems: 'center',
+    },
+    imageContainer: {
+      flex: 1.5,
+      width: Dimensions.get('screen').width / 2,
+    },
+    image: {
+      width: '100%',
+      height: '100%',
+    },
+    buttonContainer: {
+      flex: 1,
+      gap: 10,
+      alignItems: 'center',
+    },
+    kakaoButtonContainer: {
+      backgroundColor: '#FEE503',
+    },
+    kakaoButtonText: {
+      color: '#181600',
+    },
+    emailText: {
+      textDecorationLine: 'underline',
+      fontWeight: '500',
+      padding: 10,
+      color: colors[theme].BLACK,
+    },
+    appleButton: {
+      width: SCREEN_WIDTH - 60,
+      height: 45,
+      paddingVertical: 25,
+    },
+  });
 
 export default AuthHomeScreen;

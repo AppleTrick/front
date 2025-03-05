@@ -17,6 +17,8 @@ import {MainDrawerParamList} from '@/navigations/drawer/MainDrawerNavigator';
 import {FeedStackParamList} from '@/navigations/stack/FeedStackNavigator';
 import useDetailStore from '@/store/useDetailPostStore';
 import useLocationStore from '@/store/useLocationStore';
+import useThemeStore from '@/store/useThemeStore';
+import {ThemeMode} from '@/types';
 import {getDateLocaleFormat, getLocalApiBaseUrl, SCREEN_WIDTH} from '@/utils';
 import {DrawerScreenProps} from '@react-navigation/drawer';
 import {CompositeScreenProps} from '@react-navigation/native';
@@ -41,6 +43,9 @@ type FeedDetailScreenProps = CompositeScreenProps<
 >;
 
 function FeedDetailScreen({route, navigation}: FeedDetailScreenProps) {
+  const {theme} = useThemeStore();
+  const styles = styling(theme);
+
   const {id} = route.params;
   const {data: post, isPending, isError} = useGetPost(id);
   const {getProfileQuery} = useAuth();
@@ -95,13 +100,13 @@ function FeedDetailScreen({route, navigation}: FeedDetailScreenProps) {
             <Octicons
               name="arrow-left"
               size={30}
-              color={colors.WHITE}
+              color={colors[theme].WHITE}
               onPress={handleGoBack}
             />
             <Ionicons
               name="ellipsis-vertical"
               size={30}
-              color={colors.WHITE}
+              color={colors[theme].WHITE}
               onPress={detailOption.show}
             />
           </View>
@@ -124,7 +129,11 @@ function FeedDetailScreen({route, navigation}: FeedDetailScreenProps) {
         </View>
         <View style={styles.contentsContainer}>
           <View style={styles.addressContainer}>
-            <Octicons name="location" size={10} color={colors.GRAY_500} />
+            <Octicons
+              name="location"
+              size={10}
+              color={colors[theme].GRAY_500}
+            />
             <Text
               style={styles.addressText}
               ellipsizeMode="tail"
@@ -195,7 +204,11 @@ function FeedDetailScreen({route, navigation}: FeedDetailScreenProps) {
             <Octicons
               name="star-fill"
               size={30}
-              color={post.isFavorite ? colors.YELLOW_500 : colors.GRAY_100}
+              color={
+                post.isFavorite
+                  ? colors[theme].YELLOW_500
+                  : colors[theme].GRAY_100
+              }
             />
           </Pressable>
           <CustomButton
@@ -214,135 +227,136 @@ function FeedDetailScreen({route, navigation}: FeedDetailScreenProps) {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    position: 'relative',
-  },
-  headerContainer: {
-    position: 'absolute',
-    top: 0,
-    zIndex: 1,
-    width: '100%',
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-  },
-  imageContainer: {
-    width: SCREEN_WIDTH,
-    height: SCREEN_WIDTH,
-  },
-  image: {
-    width: '100%',
-    height: '100%',
-  },
-  emptyImageContainer: {
-    width: SCREEN_WIDTH,
-    height: SCREEN_WIDTH,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: colors.GRAY_200,
-    borderColor: colors.GRAY_200,
-    borderWidth: 1,
-  },
-  contentsContainer: {
-    paddingVertical: 20,
-    paddingHorizontal: 20,
-    backgroundColor: colors.WHITE,
-    marginBottom: 10,
-  },
-  titleText: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: colors.BLACK,
-  },
-  infoContainer: {
-    marginVertical: 20,
-    gap: 8,
-  },
-  infoRow: {
-    flexDirection: 'row',
-  },
-  infoColum: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 5,
-  },
-  infoColumKeyText: {
-    color: colors.BLACK,
-  },
-  infoColumValueText: {
-    color: colors.PINK_700,
-  },
-  markerColor: {
-    width: 10,
-    height: 10,
-    borderRadius: 10,
-  },
-  emptyCategoryContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.GRAY_300,
-    padding: 2,
-    borderRadius: 2,
-  },
-  addressText: {
-    color: colors.GRAY_500,
-    fontSize: 12,
-  },
-  addressContainer: {
-    gap: 5,
-    alignItems: 'center',
-    flexDirection: 'row',
-    marginVertical: 10,
-  },
+const styling = (theme: ThemeMode) =>
+  StyleSheet.create({
+    container: {
+      position: 'relative',
+    },
+    headerContainer: {
+      position: 'absolute',
+      top: 0,
+      zIndex: 1,
+      width: '100%',
+    },
+    header: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      paddingHorizontal: 15,
+      paddingVertical: 10,
+    },
+    imageContainer: {
+      width: SCREEN_WIDTH,
+      height: SCREEN_WIDTH,
+    },
+    image: {
+      width: '100%',
+      height: '100%',
+    },
+    emptyImageContainer: {
+      width: SCREEN_WIDTH,
+      height: SCREEN_WIDTH,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: colors[theme].GRAY_200,
+      borderColor: colors[theme].GRAY_200,
+      borderWidth: 1,
+    },
+    contentsContainer: {
+      paddingVertical: 20,
+      paddingHorizontal: 20,
+      backgroundColor: colors[theme].WHITE,
+      marginBottom: 10,
+    },
+    titleText: {
+      fontSize: 22,
+      fontWeight: 'bold',
+      color: colors[theme].BLACK,
+    },
+    infoContainer: {
+      marginVertical: 20,
+      gap: 8,
+    },
+    infoRow: {
+      flexDirection: 'row',
+    },
+    infoColum: {
+      flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 5,
+    },
+    infoColumKeyText: {
+      color: colors[theme].BLACK,
+    },
+    infoColumValueText: {
+      color: colors[theme].PINK_700,
+    },
+    markerColor: {
+      width: 10,
+      height: 10,
+      borderRadius: 10,
+    },
+    emptyCategoryContainer: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: colors[theme].GRAY_300,
+      padding: 2,
+      borderRadius: 2,
+    },
+    addressText: {
+      color: colors[theme].GRAY_500,
+      fontSize: 12,
+    },
+    addressContainer: {
+      gap: 5,
+      alignItems: 'center',
+      flexDirection: 'row',
+      marginVertical: 10,
+    },
 
-  descriptionText: {
-    color: colors.BLACK,
-    lineHeight: 25,
-    fontSize: 16,
-  },
-  imageContentsContainer: {
-    paddingVertical: 15,
-    backgroundColor: colors.WHITE,
-    marginBottom: 10,
-  },
-  bottomContainer: {
-    position: 'absolute',
-    bottom: 0,
-    width: '100%',
-    alignItems: 'flex-end',
-    paddingTop: 10,
-    paddingHorizontal: 10,
-    backgroundColor: colors.WHITE,
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderColor: colors.GRAY_200,
-  },
-  tabContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
-  },
-  tabContainerNoInsets: {
-    marginBottom: 10,
-  },
-  scrollNoInsets: {
-    marginBottom: 65,
-  },
+    descriptionText: {
+      color: colors[theme].BLACK,
+      lineHeight: 25,
+      fontSize: 16,
+    },
+    imageContentsContainer: {
+      paddingVertical: 15,
+      backgroundColor: colors[theme].WHITE,
+      marginBottom: 10,
+    },
+    bottomContainer: {
+      position: 'absolute',
+      bottom: 0,
+      width: '100%',
+      alignItems: 'flex-end',
+      paddingTop: 10,
+      paddingHorizontal: 10,
+      backgroundColor: colors[theme].WHITE,
+      borderTopWidth: StyleSheet.hairlineWidth,
+      borderColor: colors[theme].GRAY_200,
+    },
+    tabContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 10,
+    },
+    tabContainerNoInsets: {
+      marginBottom: 10,
+    },
+    scrollNoInsets: {
+      marginBottom: 65,
+    },
 
-  bookmarkerContainer: {
-    backgroundColor: colors.PINK_700,
-    height: '100%',
-    paddingHorizontal: 5,
-    justifyContent: 'center',
-    borderRadius: 3,
-  },
-  bookmarkerPressedContainer: {
-    opacity: 0.5,
-  },
-});
+    bookmarkerContainer: {
+      backgroundColor: colors[theme].PINK_700,
+      height: '100%',
+      paddingHorizontal: 5,
+      justifyContent: 'center',
+      borderRadius: 3,
+    },
+    bookmarkerPressedContainer: {
+      opacity: 0.5,
+    },
+  });
 
 export default FeedDetailScreen;

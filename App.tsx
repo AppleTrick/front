@@ -8,12 +8,14 @@ import Toast, {
   ErrorToast,
 } from 'react-native-toast-message';
 import {colors} from '@/constants';
+import useThemeStorage from '@/hooks/useThemeStorage';
+import {StatusBar} from 'react-native';
 
 const toastConfig = {
   success: (props: BaseToastProps) => (
     <BaseToast
       {...props}
-      style={{borderLeftColor: colors.BLUE_500}}
+      style={{borderLeftColor: colors.light.BLUE_500}}
       contentContainerStyle={{paddingHorizontal: 15}}
       text1Style={{
         fontSize: 14,
@@ -24,7 +26,7 @@ const toastConfig = {
   error: (props: BaseToastProps) => (
     <ErrorToast
       {...props}
-      style={{borderLeftColor: colors.RED_500}}
+      style={{borderLeftColor: colors.light.RED_500}}
       text1Style={{
         fontSize: 14,
       }}
@@ -36,8 +38,13 @@ const toastConfig = {
 };
 
 function App(): JSX.Element {
+  const {theme} = useThemeStorage();
+
   return (
     <QueryClientProvider client={queryClient}>
+      <StatusBar
+        barStyle={theme === 'light' ? 'dark-content' : 'light-content'}
+      />
       <NavigationContainer>
         <RootNavigator />
         <Toast config={toastConfig} />
