@@ -1,3 +1,4 @@
+import {storageKeys} from '@/constants';
 import useThemeStore from '@/store/useThemeStore';
 import {ThemeMode} from '@/types';
 import {getEncryptStorage, setEncryptStorage} from '@/utils';
@@ -9,22 +10,23 @@ function useThemeStorage() {
   const {theme, isSystem, setSystemTheme, setTheme} = useThemeStore();
 
   const setMode = async (mode: ThemeMode) => {
-    await setEncryptStorage('themeMode', mode);
+    await setEncryptStorage(storageKeys.THEME_MODE, mode);
     setTheme(mode);
   };
   const setSystem = async (flag: boolean) => {
-    await setEncryptStorage('themeMode', flag);
+    await setEncryptStorage(storageKeys.THEME_SYSTEM, flag);
     setSystemTheme(flag);
   };
 
   useEffect(() => {
-    async () => {
-      const mode = (await getEncryptStorage('themeMode')) ?? 'light';
-      const systemMode = (await getEncryptStorage('themeMode')) ?? false;
+    (async () => {
+      const mode = (await getEncryptStorage(storageKeys.THEME_MODE)) ?? 'light';
+      const systemMode =
+        (await getEncryptStorage(storageKeys.THEME_SYSTEM)) ?? false;
       const newMode = systemMode ? systemTheme : mode;
       setTheme(newMode);
       setSystemTheme(systemMode);
-    };
+    })();
   }, [setTheme, setSystemTheme, systemTheme]);
 
   return {theme, isSystem, setMode, setSystem};

@@ -24,7 +24,7 @@ function DarkModeOption({isVisible, hideOption}: DarkModeOptionProps) {
 
   const handlePressSystem = () => {
     setMode(systemDefault ?? 'light');
-    setSystem(false);
+    setSystem(true);
     hideOption();
   };
 
