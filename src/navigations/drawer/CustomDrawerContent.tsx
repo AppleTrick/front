@@ -13,14 +13,11 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 function CustomDrawerContent(props: DrawerContentComponentProps) {
-  const {getProfileQuery} = useAuth();
-  const {email, nickname, imageUri, kakaoImageUri} = getProfileQuery.data || {};
   const {theme} = useThemeStore();
   const styles = styling(theme);
 
-  // const handleLogout = () => {
-  //   logoutMutation.mutate(null);
-  // };
+  const {getProfileQuery} = useAuth();
+  const {email, nickname, imageUri, kakaoImageUri} = getProfileQuery.data || {};
 
   const handlePressSetting = () => {
     props.navigation.navigate(mainNavigations.SETTING, {
@@ -55,11 +52,7 @@ function CustomDrawerContent(props: DrawerContentComponentProps) {
         </View>
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
-      {/* <Pressable
-        onPress={handleLogout}
-        style={{alignItems: 'flex-end', padding: 10}}>
-        <Text>로그아웃</Text>
-      </Pressable> */}
+
       <View style={styles.bottomContainer}>
         <Pressable style={styles.bottomMenu} onPress={handlePressSetting}>
           <MaterialIcons
@@ -119,7 +112,7 @@ const styling = (theme: ThemeMode) =>
     bottomText: {
       fontWeight: '600',
       fontSize: 15,
-      color: colors[theme].GRAY_700,
+      color: colors[theme].BLACK,
     },
   });
 

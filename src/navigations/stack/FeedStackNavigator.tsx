@@ -19,21 +19,21 @@ const Stack = createStackNavigator<FeedStackParamList>();
 
 function FeedStackNavigator() {
   const {theme} = useThemeStore();
+
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: {
-          backgroundColor: 'white',
-          shadowColor: 'red',
-        },
         cardStyle: {
-          backgroundColor: 'white',
+          backgroundColor: colors[theme].WHITE,
+        },
+        headerStyle: {
+          shadowColor: colors[theme].GRAY_200,
+          backgroundColor: colors[theme].WHITE,
         },
         headerTitleStyle: {
           fontSize: 15,
         },
-        headerTintColor: 'black',
-        headerMode: 'screen',
+        headerTintColor: colors[theme].BLACK,
       }}>
       <Stack.Screen
         name={feedNavigations.FEED_HOME}

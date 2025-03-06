@@ -26,15 +26,13 @@ function SettingStackNavigator() {
           backgroundColor: colors[theme].GRAY_100,
         },
         headerStyle: {
-          backgroundColor: 'white',
-          shadowColor: 'red',
+          shadowColor: colors[theme].GRAY_200,
+          backgroundColor: colors[theme].WHITE,
         },
-
         headerTitleStyle: {
           fontSize: 15,
         },
-        headerTintColor: 'black',
-        headerMode: 'screen',
+        headerTintColor: colors[theme].BLACK,
       }}>
       <Stack.Screen
         name={settingNavigations.SETTING_HOME}

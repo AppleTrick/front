@@ -63,9 +63,10 @@ const MainDrawerNavigator = () => {
           width: SCREEN_WIDTH * 0.6,
           backgroundColor: colors[theme].WHITE,
         },
-        drawerActiveTintColor: colors[theme].BLACK,
+        drawerActiveTintColor: colors[theme].UNCHANGE_BLACK,
         drawerInactiveTintColor: colors[theme].GRAY_500,
-        drawerActiveBackgroundColor: colors[theme].PINK_200,
+        drawerActiveBackgroundColor:
+          theme === 'light' ? colors[theme].PINK_200 : colors[theme].PINK_500,
         drawerInactiveBackgroundColor: colors[theme].GRAY_200,
         drawerItemStyle: {
           marginVertical: 3,
@@ -94,6 +95,14 @@ const MainDrawerNavigator = () => {
           title: '캘린더',
           headerShown: true,
           headerLeft: () => FeedHomeHeaderLeft(),
+          headerStyle: {
+            backgroundColor: colors[theme].WHITE,
+            shadowColor: colors[theme].GRAY_200,
+          },
+          headerTintColor: colors[theme].BLACK,
+          headerTitleStyle: {
+            fontSize: 15,
+          },
         }}
       />
       <Drawer.Screen

@@ -22,11 +22,7 @@ function FeedFavoriteList() {
   };
 
   const handleEndReached = () => {
-    // console.log('hasNextPage:', hasNextPage);
-    // console.log('isFetchingNextPage:', isFetchingNextPage);
-
     if (hasNextPage && !isFetchingNextPage) {
-      //   console.log('추가 패치 작동');
       fetchNextPage();
     }
   };

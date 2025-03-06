@@ -54,11 +54,11 @@ const styling = (theme: ThemeMode) =>
       borderRadius: 27,
       borderBottomRightRadius: 1,
       borderWidth: 1,
-      borderColor: colors[theme].BLACK,
+      borderColor: colors[theme].UNCHANGE_BLACK,
     },
     eye: {
       position: 'absolute',
-      backgroundColor: colors[theme].BLACK,
+      backgroundColor: colors[theme].UNCHANGE_BLACK,
       width: 4,
       height: 4,
       borderRadius: 4,
@@ -85,7 +85,7 @@ const styling = (theme: ThemeMode) =>
       marginLeft: 5,
       marginTop: 5,
       borderRightColor: 'rgba(255,255,255 / 0.01)',
-      borderLeftColor: colors[theme].BLACK,
+      borderLeftColor: colors[theme].UNCHANGE_BLACK,
     },
     soso: {
       transform: [{rotate: '45deg'}],
@@ -93,14 +93,14 @@ const styling = (theme: ThemeMode) =>
       marginTop: 13,
       width: 8,
       height: 8,
-      borderLeftColor: colors[theme].BLACK,
+      borderLeftColor: colors[theme].UNCHANGE_BLACK,
       borderLeftWidth: 1,
     },
     bad: {
       marginLeft: 12,
       marginTop: 12,
       borderRightColor: 'rgba(255,255,255 / 0.01)',
-      borderLeftColor: colors[theme].BLACK,
+      borderLeftColor: colors[theme].UNCHANGE_BLACK,
     },
   });
 

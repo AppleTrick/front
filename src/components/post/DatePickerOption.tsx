@@ -1,4 +1,6 @@
 import {colors} from '@/constants';
+import useThemeStore from '@/store/useThemeStore';
+import {ThemeMode} from '@/types';
 import {
   Modal,
   Pressable,
@@ -22,6 +24,9 @@ function DatePickerOption({
   onChangeDate,
   onConfirmData,
 }: DatePickerOptionProps) {
+  const {theme} = useThemeStore();
+  const styles = styling(theme);
+
   return (
     <Modal visible={isVisible} transparent animationType="slide">
       <SafeAreaView style={styles.optionBackground}>
@@ -46,34 +51,35 @@ function DatePickerOption({
   );
 }
 
-const styles = StyleSheet.create({
-  optionBackground: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    backgroundColor: 'rgba(0,0,0 / 0.5)',
-  },
-  optionContainer: {
-    borderRadius: 15,
-    marginHorizontal: 10,
-    marginBottom: 10,
-    backgroundColor: colors.GRAY_100,
-    overflow: 'hidden',
-  },
-  optionButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 50,
-    gap: 5,
-  },
-  PickerContainer: {
-    alignItems: 'center',
-  },
-  optionText: {
-    color: colors.BLUE_500,
-    fontSize: 17,
-    fontWeight: '500',
-  },
-});
+const styling = (theme: ThemeMode) =>
+  StyleSheet.create({
+    optionBackground: {
+      flex: 1,
+      justifyContent: 'flex-end',
+      backgroundColor: 'rgba(0,0,0 / 0.5)',
+    },
+    optionContainer: {
+      borderRadius: 15,
+      marginHorizontal: 10,
+      marginBottom: 10,
+      backgroundColor: colors[theme].GRAY_100,
+      overflow: 'hidden',
+    },
+    optionButton: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: 50,
+      gap: 5,
+    },
+    PickerContainer: {
+      alignItems: 'center',
+    },
+    optionText: {
+      color: colors[theme].BLUE_500,
+      fontSize: 17,
+      fontWeight: '500',
+    },
+  });
 
 export default DatePickerOption;

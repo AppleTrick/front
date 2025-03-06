@@ -1,10 +1,11 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import {StyleSheet} from 'react-native';
-import {mapNavigations} from '@/constants';
+import {colors, mapNavigations} from '@/constants';
 import MapHomeScreen from '@/screens/map/MapHomeScreen';
 import AddPostScreen from '@/screens/map/AddPostScreen';
 import {LatLng} from 'react-native-maps';
 import SearchLocationScreen from '@/screens/map/SearchLocationScreen';
+import useThemeStore from '@/store/useThemeStore';
 
 export type MapStackParamList = {
   [mapNavigations.MAP_HOME]: undefined;
@@ -15,20 +16,22 @@ export type MapStackParamList = {
 const Stack = createStackNavigator<MapStackParamList>();
 
 function MapStackNavigator() {
+  const {theme} = useThemeStore();
+
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: {
-          backgroundColor: 'white',
-          shadowColor: 'red',
-        },
         cardStyle: {
-          backgroundColor: 'white',
+          backgroundColor: colors[theme].WHITE,
+        },
+        headerStyle: {
+          shadowColor: colors[theme].GRAY_200,
+          backgroundColor: colors[theme].WHITE,
         },
         headerTitleStyle: {
           fontSize: 15,
         },
-        headerTintColor: 'black',
+        headerTintColor: colors[theme].BLACK,
       }}>
       <Stack.Screen
         name={mapNavigations.MAP_HOME}

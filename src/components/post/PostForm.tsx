@@ -25,6 +25,7 @@ import {SafeAreaView, ScrollView, StyleSheet, View} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import useDetailStore from '@/store/useDetailPostStore';
 import useMutateUpdatePost from '@/hooks/queries/useMutateUpdatePost';
+import useThemeStore from '@/store/useThemeStore';
 
 interface PostFormProps {
   isEdit?: boolean;
@@ -32,6 +33,8 @@ interface PostFormProps {
 }
 
 function PostForm({location, isEdit = false}: PostFormProps) {
+  const {theme} = useThemeStore();
+
   const navigation = useNavigation<StackNavigationProp<FeedStackParamList>>();
   const descriptionRef = useRef<TextInput | null>(null);
   const createPost = useMutateCreatePost();
@@ -58,6 +61,7 @@ function PostForm({location, isEdit = false}: PostFormProps) {
   const [score, setScore] = useState(isEditMode ? detailPost.score : 5);
   const imagePicker = useImagePicker({
     initialImages: isEditMode ? detailPost.images : [],
+    mode: 'multiple',
   });
 
   usePermissions('PHOTO');
@@ -128,7 +132,11 @@ function PostForm({location, isEdit = false}: PostFormProps) {
             value={address}
             disabled
             icon={
-              <Octicons name="location" size={16} color={colors.GRAY_500} />
+              <Octicons
+                name="location"
+                size={16}
+                color={colors[theme].GRAY_500}
+              />
             }
           />
           <CustomButton
