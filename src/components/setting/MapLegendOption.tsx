@@ -8,7 +8,7 @@ interface MapLegendOptionProps {
 }
 
 function MapLegendOption({isVisible, hideOption}: MapLegendOptionProps) {
-  const {set} = useLegendStorage();
+  const {set, isVisible: isVisibleLegend} = useLegendStorage();
 
   const handlePressShow = () => {
     set(true);
@@ -24,11 +24,15 @@ function MapLegendOption({isVisible, hideOption}: MapLegendOptionProps) {
     <CompoundOption isVisible={isVisible} hideOption={hideOption}>
       <CompoundOption.BackGround>
         <CompoundOption.Container>
-          <CompoundOption.Button onPress={handlePressShow}>
+          <CompoundOption.Button
+            onPress={handlePressShow}
+            isChecked={isVisibleLegend}>
             표시하기
           </CompoundOption.Button>
           <CompoundOption.Divider />
-          <CompoundOption.Button onPress={handlePressHide}>
+          <CompoundOption.Button
+            onPress={handlePressHide}
+            isChecked={!isVisibleLegend}>
             숨기기
           </CompoundOption.Button>
         </CompoundOption.Container>
@@ -41,7 +45,5 @@ function MapLegendOption({isVisible, hideOption}: MapLegendOptionProps) {
     </CompoundOption>
   );
 }
-
-const styles = StyleSheet.create({});
 
 export default MapLegendOption;
