@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 
 import {storageKeys} from '@/constants';
 import type {Marker} from '@/types';

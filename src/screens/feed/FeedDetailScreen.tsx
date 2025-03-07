@@ -23,7 +23,7 @@ import {getDateLocaleFormat, getLocalApiBaseUrl, SCREEN_WIDTH} from '@/utils';
 import {DrawerScreenProps} from '@react-navigation/drawer';
 import {CompositeScreenProps} from '@react-navigation/native';
 import {StackScreenProps} from '@react-navigation/stack';
-import {useEffect} from 'react';
+import {Suspense, useEffect} from 'react';
 import {
   Image,
   Pressable,
