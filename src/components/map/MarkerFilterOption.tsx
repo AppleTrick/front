@@ -4,6 +4,7 @@ import {useState} from 'react';
 import {MarkerColor} from '@/types';
 import useAuth from '@/hooks/queries/useAuth';
 import {colorHex} from '@/constants';
+import useMarkerFilter from '@/hooks/useMarkerFilterStorage';
 
 interface MarkerFilterOptionProps {
   isVisible: boolean;
@@ -23,9 +24,17 @@ function MarkerFilterOption({isVisible, hideOption}: MarkerFilterOptionProps) {
 
   const {getProfileQuery} = useAuth();
   const {categories} = getProfileQuery.data || {};
+  const markerFilter = useMarkerFilter();
 
   const handleCondition = (condition: string) => {
     setFilterCondition(condition);
+  };
+
+  const handleFilter = (name: string) => {
+    markerFilter.set({
+      ...markerFilter.items,
+      [name]: !markerFilter.items[name],
+    });
   };
 
   return (
@@ -50,8 +59,8 @@ function MarkerFilterOption({isVisible, hideOption}: MarkerFilterOptionProps) {
               {categoryList.map(color => (
                 <CompoundOption.CheckBox
                   key={color}
-                  isChecked={false}
-                  onPress={() => {}}
+                  isChecked={markerFilter.items[color]}
+                  onPress={() => handleFilter(color)}
                   icon={
                     <View
                       style={[
@@ -69,8 +78,8 @@ function MarkerFilterOption({isVisible, hideOption}: MarkerFilterOptionProps) {
               {['1', '2', '3', '4', '5'].map(score => (
                 <CompoundOption.CheckBox
                   key={score}
-                  isChecked={false}
-                  onPress={() => {}}>
+                  isChecked={markerFilter.items[score]}
+                  onPress={() => handleFilter(score)}>
                   {score}
                 </CompoundOption.CheckBox>
               ))}
