@@ -1,13 +1,12 @@
 import {colorHex, colors} from '@/constants';
 import useAuth from '@/hooks/queries/useAuth';
-import useThemeStorage from '@/hooks/useThemeStorage';
 import useThemeStore from '@/store/useThemeStore';
 import {Category, MarkerColor, ThemeMode} from '@/types';
 import {StyleSheet, Text, View} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Fragment} from 'react/jsx-runtime';
 
-const calegoryList: MarkerColor[] = [
+const categoryList: MarkerColor[] = [
   'RED',
   'YELLOW',
   'GREEN',
@@ -27,7 +26,7 @@ function MapLegend() {
     <>
       {Object.values(categories as Category).join('') !== '' && (
         <View style={[styles.container, {top: insets.top || 20}]}>
-          {calegoryList.map((color, i) => {
+          {categoryList.map((color, i) => {
             return (
               <Fragment key={i}>
                 {categories?.[color] !== '' && (

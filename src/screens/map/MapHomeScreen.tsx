@@ -30,6 +30,7 @@ import {ThemeMode} from '@/types';
 import getMapStyle from '@/style/mapStyle';
 import useLegendStorage from '@/hooks/useLegendStorage';
 import MapLegend from '@/components/map/MapLegend';
+import MarkerFilterOption from '@/components/map/MarkerFilterOption';
 
 type Navigation = CompositeNavigationProp<
   StackNavigationProp<MapStackParamList>,
@@ -49,6 +50,8 @@ function MapHomeScreen({}) {
   const {data: markers = []} = useGetMarkers();
   const {mapRef, moveMapView, handleChangeDelta} = useMoveMapView();
   const legend = useLegendStorage();
+
+  const filterOption = useModal();
   usePermissions('LOCATION');
 
   const handlePressMarker = (id: number, coordinate: LatLng) => {
@@ -138,6 +141,13 @@ function MapHomeScreen({}) {
         <Pressable style={styles.mapButton} onPress={handlePressSearch}>
           <Ionicons name="search" color={colors[theme].WHITE} size={25} />
         </Pressable>
+        <Pressable style={styles.mapButton} onPress={filterOption.show}>
+          <Ionicons
+            name="options-outline"
+            color={colors[theme].WHITE}
+            size={25}
+          />
+        </Pressable>
         <Pressable style={styles.mapButton} onPress={handlePressUserLocation}>
           <MaterialIcons
             name="my-location"
@@ -150,6 +160,10 @@ function MapHomeScreen({}) {
         markerId={markerId}
         isVisible={markerModal.isVisible}
         hide={markerModal.hide}
+      />
+      <MarkerFilterOption
+        isVisible={filterOption.isVisible}
+        hideOption={filterOption.hide}
       />
       {legend.isVisible && <MapLegend />}
     </>
@@ -164,7 +178,6 @@ const styling = (theme: ThemeMode) =>
     drawerButton: {
       position: 'absolute',
       left: 0,
-      // top: 20,
       paddingVertical: 10,
       paddingHorizontal: 12,
       backgroundColor: colors[theme].PINK_700,
