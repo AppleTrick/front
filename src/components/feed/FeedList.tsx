@@ -30,6 +30,8 @@ function FeedList() {
     }
   };
 
+  // throw new Error();
+
   return (
     <FlatList
       data={posts?.pages.flat()}

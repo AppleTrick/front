@@ -25,6 +25,8 @@ import {Category, Profile} from '@/types';
 function useSignup(mutationOptions?: useMutationCustomOptions) {
   return useMutation({
     mutationFn: postSignup,
+    // 서버 에러일때만 할수 있도록 설정
+    throwOnError: error => Number(error.response?.status) >= 500,
     ...mutationOptions,
   });
 }
@@ -69,6 +71,7 @@ function useLogin<T>(
         queryKey: [queryKeys.AUTH, queryKeys.GET_PROFILE],
       });
     },
+    throwOnError: error => Number(error.response?.status) >= 500,
     ...mutationOptions,
   });
 }
@@ -87,7 +90,7 @@ function useAppleLogin(mutationOptions?: useMutationCustomOptions) {
 
 // Refresh 토큰으로 AccessToken을 갱신
 function useGetRefreshToken() {
-  const {isSuccess, data, isError} = useQuery({
+  const {isSuccess, data, isError, isPending} = useQuery({
     queryKey: [queryKeys.AUTH, queryKeys.GET_ACCESS_TOKEN],
     queryFn: getAccessToken,
     staleTime: numbers.ACCESS_TOKEN_REFRESH_TIME,
@@ -111,7 +114,7 @@ function useGetRefreshToken() {
     }
   }, [isError]);
 
-  return {isSuccess, isError};
+  return {isSuccess, isError, isPending};
 }
 
 type ResponseSelectProfile = {categories: Category} & Profile;
@@ -198,6 +201,7 @@ function useAuth() {
     onSuccess: () => logoutMutation.mutate(null),
   });
   const categoryMutation = useMutateCategory();
+  const isLoginLoading = refreshTokenQuery.isPending;
 
   return {
     signupMutation,
@@ -210,6 +214,7 @@ function useAuth() {
     profileMutation,
     deleteAccountMutation,
     categoryMutation,
+    isLoginLoading,
   };
 }
 
