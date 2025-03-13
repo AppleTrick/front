@@ -2,10 +2,10 @@
 
 buildscript {
     ext {
-        buildToolsVersion = "33.0.0"
-        minSdkVersion = 21
-        compileSdkVersion = 33
-        targetSdkVersion = 33
+     buildToolsVersion = "33.0.0"  // 업데이트
+        minSdkVersion = 21 
+        compileSdkVersion = 33  // 34로 업데이트
+        targetSdkVersion = 33  
         
         // We use NDK 23 which has both M1 support and is the side-by-side NDK version from AGP.
         ndkVersion = "23.1.7779620"
@@ -21,8 +21,34 @@ buildscript {
         maven { url "https://www.jitpack.io" }
     }
     dependencies {
-        classpath("com.android.tools.build:gradle")
+        // classpath("com.android.tools.build:gradle:8.0.0")  // 버전 명시 및 업데이트
+        // classpath("com.android.tools.build:gradle:8.3.0") // 최신 버전 사용
+        classpath("com.android.tools.build:gradle:8.0.1")
         classpath("com.facebook.react:react-native-gradle-plugin")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.21") // 최신 버전 사용
+    }
+}
+
+allprojects {
+    plugins.withId("com.android.library") {
+        android {
+            buildFeatures {
+                buildConfig = true
+            }
+        }
+       
+    }
+
+    subprojects {
+        afterEvaluate { project ->
+            if (project.hasProperty('android')) {
+                project.android {
+                    if (namespace == null) {
+                        namespace project.group
+                    }
+                }
+            }
+        }
     }
 }
 

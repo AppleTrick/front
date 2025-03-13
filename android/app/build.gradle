@@ -104,6 +104,15 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
+
+    // 추가로 넣은 부분
+     buildFeatures {
+        buildConfig = true  // BuildConfig 생성 기능 활성화
+    }
+
+    plugins {
+        id("org.jetbrains.kotlin.android") apply false // apply false 추가
+    }    
 }
 
 dependencies {
