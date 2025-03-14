@@ -71,10 +71,9 @@ def jscFlavor = 'org.webkit:android-jsc:+'
 
 android {
     ndkVersion rootProject.ext.ndkVersion
-
     compileSdkVersion rootProject.ext.compileSdkVersion
-
     namespace "com.matzipapp"
+
     defaultConfig {
         applicationId "com.matzipapp"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -110,14 +109,16 @@ android {
         buildConfig = true  // BuildConfig 생성 기능 활성화
     }
 
-    plugins {
-        id("org.jetbrains.kotlin.android") apply false // apply false 추가
-    }    
 }
 
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
+
+    // 추가부분
+    implementation("androidx.activity:activity-ktx:1.8.2")
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.annotation:annotation-experimental:1.3.1")
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}")
     debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {
