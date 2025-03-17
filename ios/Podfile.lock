@@ -386,7 +386,7 @@ PODS:
     - react-native-config/App (= 1.5.3)
   - react-native-config/App (1.5.3):
     - React-Core
-  - react-native-date-picker (5.0.10):
+  - react-native-date-picker (4.3.5):
     - React-Core
   - react-native-encrypted-storage (4.0.3):
     - React-Core
@@ -519,13 +519,10 @@ PODS:
     - React-jsi (= 0.72.6)
     - React-logger (= 0.72.6)
     - React-perflogger (= 0.72.6)
-  - RNAppleAuthentication (2.4.0):
-    - React-Core
   - RNCMaskedView (0.3.2):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
-  - RNGestureHandler (2.21.2):
-    - RCT-Folly (= 2021.07.22.00)
+  - RNGestureHandler (2.9.0):
     - React-Core
   - RNImageCropPicker (0.42.0):
     - React-Core
@@ -538,25 +535,35 @@ PODS:
     - TOCropViewController (~> 2.7.4)
   - RNPermissions (5.2.2):
     - React-Core
-  - RNReanimated (3.16.6):
-    - RCT-Folly (= 2021.07.22.00)
+  - RNReanimated (3.5.4):
+    - DoubleConversion
+    - FBLazyVector
+    - glog
+    - hermes-engine
+    - RCT-Folly
+    - RCTRequired
+    - RCTTypeSafety
+    - React-callinvoker
     - React-Core
+    - React-Core/DevSupport
+    - React-Core/RCTWebSocket
+    - React-CoreModules
+    - React-cxxreact
+    - React-hermes
+    - React-jsi
+    - React-jsiexecutor
+    - React-jsinspector
+    - React-RCTActionSheet
+    - React-RCTAnimation
+    - React-RCTAppDelegate
+    - React-RCTBlob
+    - React-RCTImage
+    - React-RCTLinking
+    - React-RCTNetwork
+    - React-RCTSettings
+    - React-RCTText
     - ReactCommon/turbomodule/core
-    - RNReanimated/reanimated (= 3.16.6)
-    - RNReanimated/worklets (= 3.16.6)
-  - RNReanimated/reanimated (3.16.6):
-    - RCT-Folly (= 2021.07.22.00)
-    - React-Core
-    - ReactCommon/turbomodule/core
-    - RNReanimated/reanimated/apple (= 3.16.6)
-  - RNReanimated/reanimated/apple (3.16.6):
-    - RCT-Folly (= 2021.07.22.00)
-    - React-Core
-    - ReactCommon/turbomodule/core
-  - RNReanimated/worklets (3.16.6):
-    - RCT-Folly (= 2021.07.22.00)
-    - React-Core
-    - ReactCommon/turbomodule/core
+    - Yoga
   - RNScreens (4.4.0):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
@@ -643,7 +650,6 @@ DEPENDENCIES:
   - React-runtimescheduler (from `../node_modules/react-native/ReactCommon/react/renderer/runtimescheduler`)
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - "RNAppleAuthentication (from `../node_modules/@invertase/react-native-apple-authentication`)"
   - "RNCMaskedView (from `../node_modules/@react-native-masked-view/masked-view`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
@@ -771,8 +777,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/react/utils"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
-  RNAppleAuthentication:
-    :path: "../node_modules/@invertase/react-native-apple-authentication"
   RNCMaskedView:
     :path: "../node_modules/@react-native-masked-view/masked-view"
   RNGestureHandler:
@@ -827,7 +831,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 194e32c6aab382d88713ad3dd0025c5f5c4ee072
   React-logger: cebf22b6cf43434e471dc561e5911b40ac01d289
   react-native-config: 8f7283449bbb048902f4e764affbbf24504454af
-  react-native-date-picker: 58c231c37c1a9be5715018b369210c34e83f6e48
+  react-native-date-picker: 90d1d60802a20085125657940b944f2bb4e5c113
   react-native-encrypted-storage: db300a3f2f0aba1e818417c1c0a6be549038deb7
   react-native-geolocation: 2d8f71eb7d0c9a0c52f336d4634444488669371d
   react-native-google-maps: 7cc1184afe41fbd15a3dffd53c924819f6587b69
@@ -853,12 +857,11 @@ SPEC CHECKSUMS:
   React-runtimescheduler: f23e337008403341177fc52ee4ca94e442c17ede
   React-utils: fa59c9a3375fb6f4aeb66714fd3f7f76b43a9f16
   ReactCommon: dd03c17275c200496f346af93a7b94c53f3093a4
-  RNAppleAuthentication: e00c76acb03351f5544373c78fa7f359bef6d5d3
   RNCMaskedView: a86b134da64b7eca096afca885c0fc74dfb4537f
-  RNGestureHandler: 0972b77a2cab0f1a61ca1a3ce348a424614f65c2
+  RNGestureHandler: 071d7a9ad81e8b83fe7663b303d132406a7d8f39
   RNImageCropPicker: 64b6bec9ec185ee59b71a93d7058816bd0e1916e
   RNPermissions: 0010f3b04de161a34fcc16bbf5412653f3f08181
-  RNReanimated: 91925a09cdde686efe4322474b3ad35bad826332
+  RNReanimated: ab2e96c6d5591c3dfbb38a464f54c8d17fb34a87
   RNScreens: 03e766c596f0a5ed6b41bc4601821b57fcc4ec84
   RNVectorIcons: 084d874504f21a5452744e400537eb96b45060b6
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
