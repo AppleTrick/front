@@ -3,6 +3,7 @@ import useThemeStore from '@/store/useThemeStore';
 import {ThemeMode} from '@/types';
 import {SCREEN_WIDTH} from '@/utils';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {useMemo} from 'react';
 
 interface DateBoxProps {
   date: number;
@@ -20,6 +21,7 @@ function DateBox({
   hasSchedule,
 }: DateBoxProps) {
   const {theme} = useThemeStore();
+  // const styles = useMemo(() => styling(theme), [theme]);
   const styles = styling(theme);
 
   return (
@@ -56,28 +58,29 @@ const styling = (theme: ThemeMode) =>
       borderTopWidth: StyleSheet.hairlineWidth,
       borderTopColor: colors[theme].GRAY_200,
       alignItems: 'center',
-      // backgroundColor: 'red',
     },
     dateContainer: {
-      // backgroundColor: 'red',
       marginTop: 5,
       alignItems: 'center',
       justifyContent: 'center',
       width: 28,
       height: 28,
       borderRadius: 28,
+      overflow: 'hidden', // 혹시 클리핑 이슈가 있을 경우 추가
     },
     selectedContainer: {
       backgroundColor: colors[theme].BLACK,
+    },
+
+    selectedTodayContainer: {
+      backgroundColor: colors[theme].PINK_700,
     },
 
     dateText: {
       fontSize: 17,
       color: colors[theme].BLACK,
     },
-    selectedTodayContainer: {
-      backgroundColor: colors[theme].PINK_700,
-    },
+
     todayText: {
       color: colors[theme].PINK_700,
       fontWeight: 'bold',
