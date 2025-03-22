@@ -11,9 +11,10 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		23BF28D0FB26374A0838DE5B /* libPods-matzipapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3B10E8022C0A536CBFD05B8 /* libPods-matzipapp.a */; };
+		306EC00768D92D57D830619C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6D7A7BAE188D59746BE27E82 /* PrivacyInfo.xcprivacy */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		D516AB65E2037F97F7680EA4 /* libPods-matzipapp-matzipappTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B890D2B78C523481156A5527 /* libPods-matzipapp-matzipappTests.a */; };
+		A4A307082A9916A7A354C083 /* libPods-matzipapp-matzipappTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 911DFBD1EF6061E15723413D /* libPods-matzipapp-matzipappTests.a */; };
+		AD8C785A5F1C2397C22982B8 /* libPods-matzipapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C50C013DC0F212F6AD43BAB /* libPods-matzipapp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,26 +31,27 @@
 		00E356EE1AD99517003FC87E /* matzipappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = matzipappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* matzipappTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = matzipappTests.m; sourceTree = "<group>"; };
+		0C50C013DC0F212F6AD43BAB /* libPods-matzipapp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-matzipapp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* matzipapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = matzipapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = matzipapp/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = matzipapp/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = matzipapp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = matzipapp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = matzipapp/main.m; sourceTree = "<group>"; };
-		2FC565A5D53B71CBDCF1A586 /* Pods-matzipapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-matzipapp.release.xcconfig"; path = "Target Support Files/Pods-matzipapp/Pods-matzipapp.release.xcconfig"; sourceTree = "<group>"; };
-		342C1564759701B61D4663D3 /* Pods-matzipapp-matzipappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-matzipapp-matzipappTests.debug.xcconfig"; path = "Target Support Files/Pods-matzipapp-matzipappTests/Pods-matzipapp-matzipappTests.debug.xcconfig"; sourceTree = "<group>"; };
-		4436EDCE0F19D33142BD8CD4 /* Pods-matzipapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-matzipapp.debug.xcconfig"; path = "Target Support Files/Pods-matzipapp/Pods-matzipapp.debug.xcconfig"; sourceTree = "<group>"; };
+		30368EC4A0596F1B43A2F678 /* Pods-matzipapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-matzipapp.release.xcconfig"; path = "Target Support Files/Pods-matzipapp/Pods-matzipapp.release.xcconfig"; sourceTree = "<group>"; };
+		4A2EC472AB2EDE54FD7327B8 /* Pods-matzipapp-matzipappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-matzipapp-matzipappTests.debug.xcconfig"; path = "Target Support Files/Pods-matzipapp-matzipappTests/Pods-matzipapp-matzipappTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4E69CEC42D2C0A0B009FFF99 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		4E69CECA2D33DF0D009FFF99 /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AntDesign.ttf; sourceTree = "<group>"; };
 		4E69CECB2D33DF0D009FFF99 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
 		4E69CECC2D33DF0D009FFF99 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 		4E69CECD2D33DF0D009FFF99 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
 		4EA060832D6DB2E9008DE85A /* matzipapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = matzipapp.entitlements; path = matzipapp/matzipapp.entitlements; sourceTree = "<group>"; };
+		6D7A7BAE188D59746BE27E82 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = ../matzipapp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = matzipapp/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B890D2B78C523481156A5527 /* libPods-matzipapp-matzipappTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-matzipapp-matzipappTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3B10E8022C0A536CBFD05B8 /* libPods-matzipapp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-matzipapp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		911DFBD1EF6061E15723413D /* libPods-matzipapp-matzipappTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-matzipapp-matzipappTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8D39827C60941EEC36E8595 /* Pods-matzipapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-matzipapp.debug.xcconfig"; path = "Target Support Files/Pods-matzipapp/Pods-matzipapp.debug.xcconfig"; sourceTree = "<group>"; };
+		D3FB21FCBC85E6574160DA89 /* Pods-matzipapp-matzipappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-matzipapp-matzipappTests.release.xcconfig"; path = "Target Support Files/Pods-matzipapp-matzipappTests/Pods-matzipapp-matzipappTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		FCFBBA73650D53FBB9304503 /* Pods-matzipapp-matzipappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-matzipapp-matzipappTests.release.xcconfig"; path = "Target Support Files/Pods-matzipapp-matzipappTests/Pods-matzipapp-matzipappTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D516AB65E2037F97F7680EA4 /* libPods-matzipapp-matzipappTests.a in Frameworks */,
+				A4A307082A9916A7A354C083 /* libPods-matzipapp-matzipappTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23BF28D0FB26374A0838DE5B /* libPods-matzipapp.a in Frameworks */,
+				AD8C785A5F1C2397C22982B8 /* libPods-matzipapp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,8 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				E3B10E8022C0A536CBFD05B8 /* libPods-matzipapp.a */,
-				B890D2B78C523481156A5527 /* libPods-matzipapp-matzipappTests.a */,
+				0C50C013DC0F212F6AD43BAB /* libPods-matzipapp.a */,
+				911DFBD1EF6061E15723413D /* libPods-matzipapp-matzipappTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -120,6 +122,7 @@
 				4E69CECB2D33DF0D009FFF99 /* Ionicons.ttf */,
 				4E69CECC2D33DF0D009FFF99 /* MaterialIcons.ttf */,
 				4E69CECD2D33DF0D009FFF99 /* Octicons.ttf */,
+				6D7A7BAE188D59746BE27E82 /* PrivacyInfo.xcprivacy */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -160,10 +163,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4436EDCE0F19D33142BD8CD4 /* Pods-matzipapp.debug.xcconfig */,
-				2FC565A5D53B71CBDCF1A586 /* Pods-matzipapp.release.xcconfig */,
-				342C1564759701B61D4663D3 /* Pods-matzipapp-matzipappTests.debug.xcconfig */,
-				FCFBBA73650D53FBB9304503 /* Pods-matzipapp-matzipappTests.release.xcconfig */,
+				C8D39827C60941EEC36E8595 /* Pods-matzipapp.debug.xcconfig */,
+				30368EC4A0596F1B43A2F678 /* Pods-matzipapp.release.xcconfig */,
+				4A2EC472AB2EDE54FD7327B8 /* Pods-matzipapp-matzipappTests.debug.xcconfig */,
+				D3FB21FCBC85E6574160DA89 /* Pods-matzipapp-matzipappTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -175,12 +178,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "matzipappTests" */;
 			buildPhases = (
-				CF926536D57A6852D6AD0E96 /* [CP] Check Pods Manifest.lock */,
+				F03865077B8E6EFD5C3101D1 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				695A55B0DA52C9D01C34A265 /* [CP] Embed Pods Frameworks */,
-				5AF60A8A04D4AE2AA5F56127 /* [CP] Copy Pods Resources */,
+				B060129BB34CE5A2F2299ED3 /* [CP] Embed Pods Frameworks */,
+				C0873993BA8151AE55B2273E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -196,14 +199,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "matzipapp" */;
 			buildPhases = (
-				7862F47AB2376F35A0E37163 /* [CP] Check Pods Manifest.lock */,
+				B38E49930E6E3F9BA21FC815 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				C7F1618E9C44DC412D25A566 /* [CP] Embed Pods Frameworks */,
-				F94C3DDA7A74180C927D4516 /* [CP] Copy Pods Resources */,
+				18BB75D776A706CF4E0F2FEF /* [CP] Embed Pods Frameworks */,
+				A75947821C81F5487F5D77B7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,6 +267,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				306EC00768D92D57D830619C /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,24 +290,41 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		5AF60A8A04D4AE2AA5F56127 /* [CP] Copy Pods Resources */ = {
+		18BB75D776A706CF4E0F2FEF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-matzipapp-matzipappTests/Pods-matzipapp-matzipappTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-matzipapp/Pods-matzipapp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-matzipapp-matzipappTests/Pods-matzipapp-matzipappTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-matzipapp/Pods-matzipapp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-matzipapp-matzipappTests/Pods-matzipapp-matzipappTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-matzipapp/Pods-matzipapp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		695A55B0DA52C9D01C34A265 /* [CP] Embed Pods Frameworks */ = {
+		A75947821C81F5487F5D77B7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-matzipapp/Pods-matzipapp-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-matzipapp/Pods-matzipapp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-matzipapp/Pods-matzipapp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B060129BB34CE5A2F2299ED3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -320,7 +341,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-matzipapp-matzipappTests/Pods-matzipapp-matzipappTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7862F47AB2376F35A0E37163 /* [CP] Check Pods Manifest.lock */ = {
+		B38E49930E6E3F9BA21FC815 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -342,24 +363,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C7F1618E9C44DC412D25A566 /* [CP] Embed Pods Frameworks */ = {
+		C0873993BA8151AE55B2273E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-matzipapp/Pods-matzipapp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-matzipapp-matzipappTests/Pods-matzipapp-matzipappTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-matzipapp/Pods-matzipapp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-matzipapp-matzipappTests/Pods-matzipapp-matzipappTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-matzipapp/Pods-matzipapp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-matzipapp-matzipappTests/Pods-matzipapp-matzipappTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CF926536D57A6852D6AD0E96 /* [CP] Check Pods Manifest.lock */ = {
+		F03865077B8E6EFD5C3101D1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -379,23 +400,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F94C3DDA7A74180C927D4516 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-matzipapp/Pods-matzipapp-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-matzipapp/Pods-matzipapp-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-matzipapp/Pods-matzipapp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -450,7 +454,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 342C1564759701B61D4663D3 /* Pods-matzipapp-matzipappTests.debug.xcconfig */;
+			baseConfigurationReference = 4A2EC472AB2EDE54FD7327B8 /* Pods-matzipapp-matzipappTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -477,7 +481,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FCFBBA73650D53FBB9304503 /* Pods-matzipapp-matzipappTests.release.xcconfig */;
+			baseConfigurationReference = D3FB21FCBC85E6574160DA89 /* Pods-matzipapp-matzipappTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -501,7 +505,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4436EDCE0F19D33142BD8CD4 /* Pods-matzipapp.debug.xcconfig */;
+			baseConfigurationReference = C8D39827C60941EEC36E8595 /* Pods-matzipapp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -529,7 +533,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2FC565A5D53B71CBDCF1A586 /* Pods-matzipapp.release.xcconfig */;
+			baseConfigurationReference = 30368EC4A0596F1B43A2F678 /* Pods-matzipapp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -623,11 +627,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-Wl",
-					"-ld_classic",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 			};
@@ -698,11 +698,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-Wl",
-					"-ld_classic",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
