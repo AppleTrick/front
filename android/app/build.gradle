@@ -88,11 +88,20 @@ dependencies {
     }
 }
 
-apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+tasks.whenTaskAdded { task ->
+    if (task.name == "lintAnalyzeDebug") {
+        task.dependsOn("copyReactNativeVectorIconFonts")
+    }
+}
+
+
+
 // react-native-vector-icon 적용
+apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+
 
 project.ext.vectoricons = [
-    iconFontNames: [ 'MaterialIcons.ttf', 'Ionicons.ttf' , 'Octicons.ttf' ] // Specify font files
+    iconFontNames: [ 'MaterialIcons.ttf', 'Ionicons.ttf' , 'Octicons.ttf' , 'AntDesign.ttf' ] // Specify font files
 ]
 
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"

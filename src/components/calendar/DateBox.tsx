@@ -67,6 +67,7 @@ const styling = (theme: ThemeMode) =>
       height: 28,
       borderRadius: 28,
       overflow: 'hidden', // 혹시 클리핑 이슈가 있을 경우 추가
+      // backgroundColor: 'red',
     },
     selectedContainer: {
       backgroundColor: colors[theme].BLACK,
